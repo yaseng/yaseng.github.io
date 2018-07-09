@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="http://yaseng.org/"/>
-  <updated>2018-06-29T10:39:05.000Z</updated>
+  <updated>2018-07-09T13:01:10.000Z</updated>
   <id>http://yaseng.org/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《物联网安全百科》测试版上线</title>
+    <link href="http://yaseng.org/iot-security-wiki-beta.html"/>
+    <id>http://yaseng.org/iot-security-wiki-beta.html</id>
+    <published>2018-06-21T16:00:00.000Z</published>
+    <updated>2018-07-09T13:01:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="物联网安全百科"><a href="#物联网安全百科" class="headerlink" title="物联网安全百科"></a>物联网安全百科</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本书是由伏宸安全实验发起的一个开源图书项目，目前属于测试版本，很多章节尚未完成，收录在日常研究过程中，总结的零散知识和心得经验，今后会不断完善内容，形成系统化的知识结构。</p><p>当今世界之发展，以大数据、人工智能为基石，网络由虚拟走向现实，连接世间万物，未来即是万物互联之时代，于是传统网络安全的边界亦由虚拟世界扩展到现实社会，诸如喧嚣尘上的智能家居、智能网联车、形形色色的智能芯片硬件，已经渗透进生活中的各个方面，商业窃密、敲诈勒索、钓鱼木马等等传统攻击手段，或将会演变成隐私监控、身份盗窃乃至危及到人身安全的现实攻击，未来安全行业的攻防主战场，是社会中的每一人，要之，安全之重，势如泰山，而安全之道在于攻守，本书亦多以真实攻守为例，略述万物互联时代攻守之思路，不敢传灯授教，但求燃一星火，以待将来。</p><p>至于攻守之道，古来久矣，上窥宇宙方圆之演化，下度红尘万物之百态，大抵皆备攻守之义，攻者，进也，取也，胜也，守者，退也，御也，全也。圣人取之以治天下，所谓不可胜者，守也，可胜者，攻也，守则不足，攻则有余，善守者藏于九地之下，善攻者动于九天之上，故能自保而全胜也。</p><p>某等学力尚浅，此书多有拾人牙慧，恣意妄言者，虽恐见笑于大方，然唯求先进之指教，拳拳之心，不可胜言。</p><h2 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h2><ul><li>在线阅读：<a href="https://iot-security.wiki" target="_blank" rel="noopener">iot-security.wiki</a>，<a href="">GitBook</a>，<a href="">国内镜像</a></li><li>项目地址：<a href="https://github.com/yaseng/iot-security-wiki" target="_blank" rel="noopener">github.com/yaseng/iot-security-wiki</a></li><li>下载：<a href="">pdf</a>,<a href="">epub</a></li></ul><h2 id="技术交流"><a href="#技术交流" class="headerlink" title="技术交流"></a>技术交流</h2><table><thead><tr><th>名称</th><th>IOT Security Wiki 0.1</th></tr></thead><tbody><tr><td>本书地址</td><td><a href="https://iot-security.wiki" target="_blank" rel="noopener">iot-security.wiki</a></td></tr><tr><td>伏宸安全实验室</td><td><a href="https://future-sec.com" target="_blank" rel="noopener">future-sec.com</a></td></tr><tr><td>IOT Security</td><td><a href="https://iot-security.org" target="_blank" rel="noopener">iot-security.org</a></td></tr><tr><td>Yaseng Blog</td><td><a href="https://yaseng.org">yaseng.org</a></td></tr><tr><td>知乎专栏</td><td><a href="https://zhuanlan.zhihu.com/future-sec" target="_blank" rel="noopener">zhuanlan.zhihu.com</a></td></tr><tr><td>邮箱</td><td>info@iot-security.wiki</td></tr><tr><td>qq 交流群</td><td>306482276</td></tr><tr><td>微信公众号</td><td><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/future-sec-qrcode.jpg" alt=""></td></tr><tr><td>微信交流群</td><td><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/wechat.jpg" alt=""></td></tr></tbody></table><h2 id="参与"><a href="#参与" class="headerlink" title="参与"></a>参与</h2><p>物联网安全随着技术的不断革新，是一个需要持续创新和学习的领域，也是一个涉及多学科、多门类的研究方向，单个的力量终究是有限的，此希望有志于此的读者能跟我们积极分享自己独到的观点和见解，此开源图书项目，编者笔力尚拙，难免多生谬误，希望各位多提宝贵意见和建议，欢迎大家<a href="https://github.com/yaseng/iot-security-wiki" target="_blank" rel="noopener">参与项目</a>。</p><h3 id="修订记录"><a href="#修订记录" class="headerlink" title="修订记录"></a>修订记录</h3><ul><li>2018-6-20  0.1 测试版本 </li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;物联网安全百科&quot;&gt;&lt;a href=&quot;#物联网安全百科&quot; class=&quot;headerlink&quot; title=&quot;物联网安全百科&quot;&gt;&lt;/a&gt;物联网安全百科&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前
+      
+    
+    </summary>
+    
+      <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="物联网安全" scheme="http://yaseng.org/tags/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="芯片安全" scheme="http://yaseng.org/tags/%E8%8A%AF%E7%89%87%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="智能硬件安全" scheme="http://yaseng.org/tags/%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="无线电安全" scheme="http://yaseng.org/tags/%E6%97%A0%E7%BA%BF%E7%94%B5%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="锁具安全" scheme="http://yaseng.org/tags/%E9%94%81%E5%85%B7%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="物理安全" scheme="http://yaseng.org/tags/%E7%89%A9%E7%90%86%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>物联网安全硬件修改系列-硬改</title>
@@ -414,9 +449,9 @@
     
       <category term="网页弹幕" scheme="http://yaseng.org/tags/%E7%BD%91%E9%A1%B5%E5%BC%B9%E5%B9%95/"/>
     
-      <category term="hexo 弹幕" scheme="http://yaseng.org/tags/hexo-%E5%BC%B9%E5%B9%95/"/>
-    
       <category term="jQuery 弹幕插件" scheme="http://yaseng.org/tags/jQuery-%E5%BC%B9%E5%B9%95%E6%8F%92%E4%BB%B6/"/>
+    
+      <category term="hexo 弹幕" scheme="http://yaseng.org/tags/hexo-%E5%BC%B9%E5%B9%95/"/>
     
   </entry>
   
@@ -535,30 +570,6 @@
       <category term="mitmf" scheme="http://yaseng.org/tags/mitmf/"/>
     
       <category term="中间人攻击" scheme="http://yaseng.org/tags/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>discuz 答题获取邀请码 qa_invite1.1</title>
-    <link href="http://yaseng.org/discuz-qa-invite-1-1.html"/>
-    <id>http://yaseng.org/discuz-qa-invite-1-1.html</id>
-    <published>2016-04-17T00:06:17.000Z</published>
-    <updated>2018-05-08T12:29:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="插件介绍"><a href="#插件介绍" class="headerlink" title="插件介绍"></a>插件介绍</h3><p>答题获取邀请码插件支持后台自定义题目，自定义生成邀请码，设置题目数量和合格数量，方便站长推广注册 。<br>插件地址  <a href="http://addon.discuz.com/?@qa_invite.plugin" title="http://addon.discuz.com/?@qa_invite.plugin" target="_blank" rel="noopener">http://addon.discuz.com/?@qa_invite.plugin</a><br><a href="/uploads/2016/04/qa_invite_1.jpg"><img src="/uploads/2016/04/qa_invite_1-300x113.jpg" alt="" title="qa_invite_1"></a><br><a id="more"></a></p><h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>后台下载安装，然后设置题目数量和答对题目数量，添加相应数量题目，并根据规则生成邀请码，邀请码注册请先在站点-注册设置里面，开启邀请码注册 。</p><h3 id="插件功能"><a href="#插件功能" class="headerlink" title="插件功能"></a>插件功能</h3><p>1:后台自定义题目，自定义生成邀请码<br>2：简单方便管理题库内容<br>3：题目数量灵活多变</p><h3 id="UaUc技术支持"><a href="#UaUc技术支持" class="headerlink" title="UaUc技术支持"></a>UaUc技术支持</h3><p>UaUcNet专业服务于广大discuz站长，提供插件私人定制，二次开发，模板定制，论坛疑难问题解答，搬家升级等服务！以专业成熟的技术水平，认真负责的工作态度，为您的论坛运营提供最贴心的技术服务！ 详情请联系UaUCNet团队客服 QQ：189333720  。<br><a href="tencent://message/?uin=189333720&amp;Site=http://www.uauc.net&amp;Menu=yes" target="_blank" rel="noopener"><img src="http://wpa.qq.com/pa?p=2:189333720:42" alt="QQ" title="QQ"></a> </p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;插件介绍&quot;&gt;&lt;a href=&quot;#插件介绍&quot; class=&quot;headerlink&quot; title=&quot;插件介绍&quot;&gt;&lt;/a&gt;插件介绍&lt;/h3&gt;&lt;p&gt;答题获取邀请码插件支持后台自定义题目，自定义生成邀请码，设置题目数量和合格数量，方便站长推广注册 。&lt;br&gt;插件地址  &lt;a href=&quot;http://addon.discuz.com/?@qa_invite.plugin&quot; title=&quot;http://addon.discuz.com/?@qa_invite.plugin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://addon.discuz.com/?@qa_invite.plugin&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/uploads/2016/04/qa_invite_1.jpg&quot;&gt;&lt;img src=&quot;/uploads/2016/04/qa_invite_1-300x113.jpg&quot; alt=&quot;&quot; title=&quot;qa_invite_1&quot;&gt;&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="原创作品" scheme="http://yaseng.org/categories/%E5%8E%9F%E5%88%9B%E4%BD%9C%E5%93%81/"/>
-    
-    
-      <category term="discuz 插件" scheme="http://yaseng.org/tags/discuz-%E6%8F%92%E4%BB%B6/"/>
-    
-      <category term="uauc作品" scheme="http://yaseng.org/tags/uauc%E4%BD%9C%E5%93%81/"/>
     
   </entry>
   
