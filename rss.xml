@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="http://yaseng.org/"/>
-  <updated>2018-07-09T13:01:10.000Z</updated>
+  <updated>2018-07-09T13:07:37.000Z</updated>
   <id>http://yaseng.org/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="http://yaseng.org/iot-security-wiki-beta.html"/>
     <id>http://yaseng.org/iot-security-wiki-beta.html</id>
     <published>2018-06-21T16:00:00.000Z</published>
-    <updated>2018-07-09T13:01:10.000Z</updated>
+    <updated>2018-07-09T13:07:37.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="物联网安全百科"><a href="#物联网安全百科" class="headerlink" title="物联网安全百科"></a>物联网安全百科</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本书是由伏宸安全实验发起的一个开源图书项目，目前属于测试版本，很多章节尚未完成，收录在日常研究过程中，总结的零散知识和心得经验，今后会不断完善内容，形成系统化的知识结构。</p><p>当今世界之发展，以大数据、人工智能为基石，网络由虚拟走向现实，连接世间万物，未来即是万物互联之时代，于是传统网络安全的边界亦由虚拟世界扩展到现实社会，诸如喧嚣尘上的智能家居、智能网联车、形形色色的智能芯片硬件，已经渗透进生活中的各个方面，商业窃密、敲诈勒索、钓鱼木马等等传统攻击手段，或将会演变成隐私监控、身份盗窃乃至危及到人身安全的现实攻击，未来安全行业的攻防主战场，是社会中的每一人，要之，安全之重，势如泰山，而安全之道在于攻守，本书亦多以真实攻守为例，略述万物互联时代攻守之思路，不敢传灯授教，但求燃一星火，以待将来。</p><p>至于攻守之道，古来久矣，上窥宇宙方圆之演化，下度红尘万物之百态，大抵皆备攻守之义，攻者，进也，取也，胜也，守者，退也，御也，全也。圣人取之以治天下，所谓不可胜者，守也，可胜者，攻也，守则不足，攻则有余，善守者藏于九地之下，善攻者动于九天之上，故能自保而全胜也。</p><p>某等学力尚浅，此书多有拾人牙慧，恣意妄言者，虽恐见笑于大方，然唯求先进之指教，拳拳之心，不可胜言。</p><h2 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h2><ul><li>在线阅读：<a href="https://iot-security.wiki" target="_blank" rel="noopener">iot-security.wiki</a>，<a href="">GitBook</a>，<a href="">国内镜像</a></li><li>项目地址：<a href="https://github.com/yaseng/iot-security-wiki" target="_blank" rel="noopener">github.com/yaseng/iot-security-wiki</a></li><li>下载：<a href="">pdf</a>,<a href="">epub</a></li></ul><h2 id="技术交流"><a href="#技术交流" class="headerlink" title="技术交流"></a>技术交流</h2><table><thead><tr><th>名称</th><th>IOT Security Wiki 0.1</th></tr></thead><tbody><tr><td>本书地址</td><td><a href="https://iot-security.wiki" target="_blank" rel="noopener">iot-security.wiki</a></td></tr><tr><td>伏宸安全实验室</td><td><a href="https://future-sec.com" target="_blank" rel="noopener">future-sec.com</a></td></tr><tr><td>IOT Security</td><td><a href="https://iot-security.org" target="_blank" rel="noopener">iot-security.org</a></td></tr><tr><td>Yaseng Blog</td><td><a href="https://yaseng.org">yaseng.org</a></td></tr><tr><td>知乎专栏</td><td><a href="https://zhuanlan.zhihu.com/future-sec" target="_blank" rel="noopener">zhuanlan.zhihu.com</a></td></tr><tr><td>邮箱</td><td>info@iot-security.wiki</td></tr><tr><td>qq 交流群</td><td>306482276</td></tr><tr><td>微信公众号</td><td><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/future-sec-qrcode.jpg" alt=""></td></tr><tr><td>微信交流群</td><td><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/wechat.jpg" alt=""></td></tr></tbody></table><h2 id="参与"><a href="#参与" class="headerlink" title="参与"></a>参与</h2><p>物联网安全随着技术的不断革新，是一个需要持续创新和学习的领域，也是一个涉及多学科、多门类的研究方向，单个的力量终究是有限的，此希望有志于此的读者能跟我们积极分享自己独到的观点和见解，此开源图书项目，编者笔力尚拙，难免多生谬误，希望各位多提宝贵意见和建议，欢迎大家<a href="https://github.com/yaseng/iot-security-wiki" target="_blank" rel="noopener">参与项目</a>。</p><h3 id="修订记录"><a href="#修订记录" class="headerlink" title="修订记录"></a>修订记录</h3><ul><li>2018-6-20  0.1 测试版本 </li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本书是由伏宸安全实验发起的一个开源图书项目，目前属于测试版本，很多章节尚未完成，收录在日常研究过程中，总结的零散知识和心得经验，今后会不断完善内容，形成系统化的知识结构。</p><p>当今世界之发展，以大数据、人工智能为基石，网络由虚拟走向现实，连接世间万物，未来即是万物互联之时代，于是传统网络安全的边界亦由虚拟世界扩展到现实社会，诸如喧嚣尘上的智能家居、智能网联车、形形色色的智能芯片硬件，已经渗透进生活中的各个方面，商业窃密、敲诈勒索、钓鱼木马等等传统攻击手段，或将会演变成隐私监控、身份盗窃乃至危及到人身安全的现实攻击，未来安全行业的攻防主战场，是社会中的每一人，要之，安全之重，势如泰山，而安全之道在于攻守，本书亦多以真实攻守为例，略述万物互联时代攻守之思路，不敢传灯授教，但求燃一星火，以待将来。</p><p>至于攻守之道，古来久矣，上窥宇宙方圆之演化，下度红尘万物之百态，大抵皆备攻守之义，攻者，进也，取也，胜也，守者，退也，御也，全也。圣人取之以治天下，所谓不可胜者，守也，可胜者，攻也，守则不足，攻则有余，善守者藏于九地之下，善攻者动于九天之上，故能自保而全胜也。</p><p>某等学力尚浅，此书多有拾人牙慧，恣意妄言者，虽恐见笑于大方，然唯求先进之指教，拳拳之心，不可胜言。</p><h2 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h2><ul><li>在线阅读：<a href="https://iot-security.wiki" target="_blank" rel="noopener">iot-security.wiki</a>，<a href="">GitBook</a>，<a href="">国内镜像</a></li><li>项目地址：<a href="https://github.com/yaseng/iot-security-wiki" target="_blank" rel="noopener">github.com/yaseng/iot-security-wiki</a></li><li>下载：<a href="">pdf</a>,<a href="">epub</a></li></ul><h2 id="技术交流"><a href="#技术交流" class="headerlink" title="技术交流"></a>技术交流</h2><table><thead><tr><th>名称</th><th>IOT Security Wiki 0.1</th></tr></thead><tbody><tr><td>本书地址</td><td><a href="https://iot-security.wiki" target="_blank" rel="noopener">iot-security.wiki</a></td></tr><tr><td>伏宸安全实验室</td><td><a href="https://future-sec.com" target="_blank" rel="noopener">future-sec.com</a></td></tr><tr><td>IOT Security</td><td><a href="https://iot-security.org" target="_blank" rel="noopener">iot-security.org</a></td></tr><tr><td>Yaseng Blog</td><td><a href="https://yaseng.org">yaseng.org</a></td></tr><tr><td>知乎专栏</td><td><a href="https://zhuanlan.zhihu.com/future-sec" target="_blank" rel="noopener">zhuanlan.zhihu.com</a></td></tr><tr><td>邮箱</td><td>info@iot-security.wiki</td></tr><tr><td>qq 交流群</td><td>306482276</td></tr><tr><td>微信公众号</td><td><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/future-sec-qrcode.jpg" alt=""></td></tr><tr><td>微信交流群</td><td><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/wechat.jpg" alt=""></td></tr></tbody></table><h2 id="参与"><a href="#参与" class="headerlink" title="参与"></a>参与</h2><p>物联网安全随着技术的不断革新，是一个需要持续创新和学习的领域，也是一个涉及多学科、多门类的研究方向，单个的力量终究是有限的，此希望有志于此的读者能跟我们积极分享自己独到的观点和见解，此开源图书项目，编者笔力尚拙，难免多生谬误，希望各位多提宝贵意见和建议，欢迎大家<a href="https://github.com/yaseng/iot-security-wiki" target="_blank" rel="noopener">参与项目</a>。</p><h3 id="修订记录"><a href="#修订记录" class="headerlink" title="修订记录"></a>修订记录</h3><ul><li>2018-6-20  0.1 测试版本 </li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;物联网安全百科&quot;&gt;&lt;a href=&quot;#物联网安全百科&quot; class=&quot;headerlink&quot; title=&quot;物联网安全百科&quot;&gt;&lt;/a&gt;物联网安全百科&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;本书是由伏宸安全实验发起的一个开源图书项目，目前属于测试版本，很多章节尚未完成，收录在日常研究过程中，总结的零散知识和心得经验，今后会不断完
       
     
     </summary>
@@ -298,33 +298,6 @@
   </entry>
   
   <entry>
-    <title>如何破解一个蓝牙锁</title>
-    <link href="http://yaseng.org/how-to-crack-a-ble-lock.html"/>
-    <id>http://yaseng.org/how-to-crack-a-ble-lock.html</id>
-    <published>2017-11-26T16:00:00.000Z</published>
-    <updated>2018-06-29T10:29:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着物联网各类技术的逐步进步，越来越多的智能设备出现在我们生活中，智能锁在锁具市场上所占的份额将会越来越大，甚至超过传统锁，成为主流。而在智能锁中，因为低功耗蓝牙技术的推广，以及受外部环境限制小，通过手机APP交互方便等特点，很多智能锁采用的就是以BLE蓝牙芯片作为控制单元，控制电机或锁簧转动的模式，实现开关锁功能。与其他的安全问题相比，锁具的被破解，可能造成的危害更大，本文通过以破解某型号蓝牙锁，来展示目前蓝牙智能锁可能面临的安全风险。</p><h2 id="蓝牙锁介绍"><a href="#蓝牙锁介绍" class="headerlink" title="蓝牙锁介绍"></a>蓝牙锁介绍</h2><p> 蓝牙锁由于不受外部环境限制，功耗较低，和手机交互方便，目前用的比较多,形状也五花八门，例如目前使用最广泛的一些智能蓝牙锁。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage9.jpg" alt="img"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage10.jpg" alt="img"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage11.jpg" alt="img"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage12.jpg" alt="img"></p><h2 id="如何去破解一个蓝牙锁"><a href="#如何去破解一个蓝牙锁" class="headerlink" title="如何去破解一个蓝牙锁"></a>如何去破解一个蓝牙锁</h2><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage13.jpg" alt="img"></p><h3 id="目标介绍"><a href="#目标介绍" class="headerlink" title="目标介绍"></a>目标介绍</h3><p>这个属于低功耗蓝牙锁，使用app 绑定之后可以开启，还能共享密码，修改密码。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage14.jpg" alt="img"></p><h3 id="内部构架"><a href="#内部构架" class="headerlink" title="内部构架"></a>内部构架</h3><p>显微镜查看电路板<br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/IMG_2214.jpg" alt="img"></p><p>拆解<br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/IMG_2216.jpg" alt="img"></p><p>蓝牙锁内部搭载了一块CC2541蓝牙芯片，通过控制电机驱动芯片，带动卡榫运转，从而形成拉锁的开关。CC2541是TI推出的一款专门适用于BLE和专用的2.4GHz应用的SOC芯片解决方案,CC254X在目前物联网蓝牙通信解决方案中，市场占有率很高，应用场景非常广泛。</p><h3 id="探测"><a href="#探测" class="headerlink" title="探测"></a>探测</h3><p>使用app初步连接探测，可以看到</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage16.jpg" alt="img"></p><h3 id="开锁流程"><a href="#开锁流程" class="headerlink" title="开锁流程"></a>开锁流程</h3><p>Logcat 查看app日志</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage17.jpg" alt="img"></p><p>流程为</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/QQ截图20171123170725.jpg" alt="img"></p><h3 id="攻击方式"><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h3><p>一般对于蓝牙锁的攻击方式有三种</p><p>1、重放攻击<br>2、暴力破解(6位数字)<br>3、云端漏洞</p><h3 id="重放攻击"><a href="#重放攻击" class="headerlink" title="重放攻击"></a>重放攻击</h3><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage18.jpg" alt="img"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage19.jpg" alt="img"></p><p>通过蓝牙抓包分析，发现通信过程没有加密，可以重放获取认证密码，但如果要模拟真实的智能锁攻击场景，显然不能通过如此显眼的方式，真实环境中往往很难有一个给我们抓包或劫持的场景，所以最好的方式是远程无接触开锁，需要去找云端的漏洞。</p><h3 id="云端漏洞"><a href="#云端漏洞" class="headerlink" title="云端漏洞"></a>云端漏洞</h3><p>云端是Thinkphp5 写的，稍微看了一下,存在有两个漏洞。无认证可以遍历所有id拿到所有锁的信息</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage20.jpg" alt="img"></p><p>没有关闭调试模式会泄露信息,传入一个空的id会吧所有锁的信息报错显示出来，泄露所有锁的密码以及绑定的电话号码mac地址等信息。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage21.jpg" alt="img"></p><h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>对于真实的破解锁场景，最好用一个手机app来开锁掩人耳目，综合以上分析，编写一个开锁Android app 。<br>工作流程为</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/QQ截图20171123170725.jpg" alt="img"></p><p>利用 com.inuker.bluetooth 库快速开发</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage22.jpg" alt="img"></p><p>APP界面</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/15117578788731.jpg" alt="img"></p><p>视频演示</p><p> <a href="https://v.qq.com/x/page/b051058vicv.html" target="_blank" rel="noopener">https://v.qq.com/x/page/b051058vicv.html</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>ti官方页面  <a href="http://www.ti.com.cn/product/cn/CC2541" target="_blank" rel="noopener">http://www.ti.com.cn/product/cn/CC2541</a><br>cc2541蓝牙芯片手册  <a href="https://wenku.baidu.com/view/c7f99ac7376baf1ffd4fad31.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/c7f99ac7376baf1ffd4fad31.html</a> </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;随着物联网各类技术的逐步进步，越来越多的智能设备出现在我们生活中，智能锁在锁具市场上所占的份额将会越来越大，甚至超过传统锁，成为主流。而在智
-      
-    
-    </summary>
-    
-      <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="智能锁" scheme="http://yaseng.org/tags/%E6%99%BA%E8%83%BD%E9%94%81/"/>
-    
-      <category term="蓝牙攻击" scheme="http://yaseng.org/tags/%E8%93%9D%E7%89%99%E6%94%BB%E5%87%BB/"/>
-    
-  </entry>
-  
-  <entry>
     <title>物联网硬件安全分析基础-固件提取</title>
     <link href="http://yaseng.org/iot-security-hardware-obtain.html"/>
     <id>http://yaseng.org/iot-security-hardware-obtain.html</id>
@@ -373,6 +346,33 @@
     
     
       <category term="指纹识别" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何破解一个蓝牙锁</title>
+    <link href="http://yaseng.org/how-to-crack-a-ble-lock.html"/>
+    <id>http://yaseng.org/how-to-crack-a-ble-lock.html</id>
+    <published>2017-11-26T16:00:00.000Z</published>
+    <updated>2018-06-29T10:29:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着物联网各类技术的逐步进步，越来越多的智能设备出现在我们生活中，智能锁在锁具市场上所占的份额将会越来越大，甚至超过传统锁，成为主流。而在智能锁中，因为低功耗蓝牙技术的推广，以及受外部环境限制小，通过手机APP交互方便等特点，很多智能锁采用的就是以BLE蓝牙芯片作为控制单元，控制电机或锁簧转动的模式，实现开关锁功能。与其他的安全问题相比，锁具的被破解，可能造成的危害更大，本文通过以破解某型号蓝牙锁，来展示目前蓝牙智能锁可能面临的安全风险。</p><h2 id="蓝牙锁介绍"><a href="#蓝牙锁介绍" class="headerlink" title="蓝牙锁介绍"></a>蓝牙锁介绍</h2><p> 蓝牙锁由于不受外部环境限制，功耗较低，和手机交互方便，目前用的比较多,形状也五花八门，例如目前使用最广泛的一些智能蓝牙锁。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage9.jpg" alt="img"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage10.jpg" alt="img"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage11.jpg" alt="img"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage12.jpg" alt="img"></p><h2 id="如何去破解一个蓝牙锁"><a href="#如何去破解一个蓝牙锁" class="headerlink" title="如何去破解一个蓝牙锁"></a>如何去破解一个蓝牙锁</h2><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage13.jpg" alt="img"></p><h3 id="目标介绍"><a href="#目标介绍" class="headerlink" title="目标介绍"></a>目标介绍</h3><p>这个属于低功耗蓝牙锁，使用app 绑定之后可以开启，还能共享密码，修改密码。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage14.jpg" alt="img"></p><h3 id="内部构架"><a href="#内部构架" class="headerlink" title="内部构架"></a>内部构架</h3><p>显微镜查看电路板<br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/IMG_2214.jpg" alt="img"></p><p>拆解<br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/IMG_2216.jpg" alt="img"></p><p>蓝牙锁内部搭载了一块CC2541蓝牙芯片，通过控制电机驱动芯片，带动卡榫运转，从而形成拉锁的开关。CC2541是TI推出的一款专门适用于BLE和专用的2.4GHz应用的SOC芯片解决方案,CC254X在目前物联网蓝牙通信解决方案中，市场占有率很高，应用场景非常广泛。</p><h3 id="探测"><a href="#探测" class="headerlink" title="探测"></a>探测</h3><p>使用app初步连接探测，可以看到</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage16.jpg" alt="img"></p><h3 id="开锁流程"><a href="#开锁流程" class="headerlink" title="开锁流程"></a>开锁流程</h3><p>Logcat 查看app日志</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage17.jpg" alt="img"></p><p>流程为</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/QQ截图20171123170725.jpg" alt="img"></p><h3 id="攻击方式"><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h3><p>一般对于蓝牙锁的攻击方式有三种</p><p>1、重放攻击<br>2、暴力破解(6位数字)<br>3、云端漏洞</p><h3 id="重放攻击"><a href="#重放攻击" class="headerlink" title="重放攻击"></a>重放攻击</h3><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage18.jpg" alt="img"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage19.jpg" alt="img"></p><p>通过蓝牙抓包分析，发现通信过程没有加密，可以重放获取认证密码，但如果要模拟真实的智能锁攻击场景，显然不能通过如此显眼的方式，真实环境中往往很难有一个给我们抓包或劫持的场景，所以最好的方式是远程无接触开锁，需要去找云端的漏洞。</p><h3 id="云端漏洞"><a href="#云端漏洞" class="headerlink" title="云端漏洞"></a>云端漏洞</h3><p>云端是Thinkphp5 写的，稍微看了一下,存在有两个漏洞。无认证可以遍历所有id拿到所有锁的信息</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage20.jpg" alt="img"></p><p>没有关闭调试模式会泄露信息,传入一个空的id会吧所有锁的信息报错显示出来，泄露所有锁的密码以及绑定的电话号码mac地址等信息。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage21.jpg" alt="img"></p><h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>对于真实的破解锁场景，最好用一个手机app来开锁掩人耳目，综合以上分析，编写一个开锁Android app 。<br>工作流程为</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/QQ截图20171123170725.jpg" alt="img"></p><p>利用 com.inuker.bluetooth 库快速开发</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/bimage22.jpg" alt="img"></p><p>APP界面</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic-fu/15117578788731.jpg" alt="img"></p><p>视频演示</p><p> <a href="https://v.qq.com/x/page/b051058vicv.html" target="_blank" rel="noopener">https://v.qq.com/x/page/b051058vicv.html</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>ti官方页面  <a href="http://www.ti.com.cn/product/cn/CC2541" target="_blank" rel="noopener">http://www.ti.com.cn/product/cn/CC2541</a><br>cc2541蓝牙芯片手册  <a href="https://wenku.baidu.com/view/c7f99ac7376baf1ffd4fad31.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/c7f99ac7376baf1ffd4fad31.html</a> </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;随着物联网各类技术的逐步进步，越来越多的智能设备出现在我们生活中，智能锁在锁具市场上所占的份额将会越来越大，甚至超过传统锁，成为主流。而在智
+      
+    
+    </summary>
+    
+      <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="智能锁" scheme="http://yaseng.org/tags/%E6%99%BA%E8%83%BD%E9%94%81/"/>
+    
+      <category term="蓝牙攻击" scheme="http://yaseng.org/tags/%E8%93%9D%E7%89%99%E6%94%BB%E5%87%BB/"/>
     
   </entry>
   
@@ -449,9 +449,9 @@
     
       <category term="网页弹幕" scheme="http://yaseng.org/tags/%E7%BD%91%E9%A1%B5%E5%BC%B9%E5%B9%95/"/>
     
-      <category term="jQuery 弹幕插件" scheme="http://yaseng.org/tags/jQuery-%E5%BC%B9%E5%B9%95%E6%8F%92%E4%BB%B6/"/>
-    
       <category term="hexo 弹幕" scheme="http://yaseng.org/tags/hexo-%E5%BC%B9%E5%B9%95/"/>
+    
+      <category term="jQuery 弹幕插件" scheme="http://yaseng.org/tags/jQuery-%E5%BC%B9%E5%B9%95%E6%8F%92%E4%BB%B6/"/>
     
   </entry>
   
