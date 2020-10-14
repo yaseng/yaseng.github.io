@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yaseng.org/yardstickone-1.html</loc>
+    
+    <lastmod>2020-10-14T06:39:19.972Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yaseng.org/king-of-lock-4.html</loc>
     
     <lastmod>2020-06-17T11:25:04.437Z</lastmod>
@@ -751,7 +758,7 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/hello-yaseng.html</loc>
+    <loc>http://yaseng.org/archives/index-22.html</loc>
     
     <lastmod>2016-09-01T13:27:52.000Z</lastmod>
     
@@ -759,6 +766,55 @@
   
   <url>
     <loc>http://yaseng.org/hackcto-201403-15.html</loc>
+    
+    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yaseng.org/seo-fucker.html</loc>
+    
+    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yaseng.org/hello-yaseng.html</loc>
+    
+    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yaseng.org/yaseng/index-22.html</loc>
+    
+    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yaseng.org/xiuno-bbs-xss-vulnerability.html</loc>
+    
+    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yaseng.org/web-client-data-security.html</loc>
+    
+    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yaseng.org/hackcto-2013-6.html</loc>
+    
+    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yaseng.org/hackcto-201310-10.html</loc>
     
     <lastmod>2016-09-01T13:27:52.000Z</lastmod>
     
@@ -779,14 +835,7 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/seo-fucker.html</loc>
-    
-    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yaseng.org/webshell-xss-fuck-xxx-ballot.html</loc>
+    <loc>http://yaseng.org/f4ck-team-anniversary-party-in-hunan-area.html</loc>
     
     <lastmod>2016-09-01T13:27:52.000Z</lastmod>
     
@@ -800,63 +849,21 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/hackcto-201310-10.html</loc>
+    <loc>http://yaseng.org/webshell-xss-fuck-xxx-ballot.html</loc>
     
     <lastmod>2016-09-01T13:27:52.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yaseng.org/f4ck-team-anniversary-party-in-hunan-area.html</loc>
-    
-    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yaseng.org/web-client-data-security.html</loc>
-    
-    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yaseng.org/xiuno-bbs-xss-vulnerability.html</loc>
-    
-    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yaseng.org/hackcto-2013-6.html</loc>
-    
-    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yaseng.org/yaseng/index-22.html</loc>
-    
-    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yaseng.org/archives/index-22.html</loc>
-    
-    <lastmod>2016-09-01T13:27:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yaseng.org/archives/index-21.html</loc>
+    <loc>http://yaseng.org/yaseng/index-21.html</loc>
     
     <lastmod>2016-09-01T13:27:25.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yaseng.org/yaseng/index-21.html</loc>
+    <loc>http://yaseng.org/archives/index-21.html</loc>
     
     <lastmod>2016-09-01T13:27:25.000Z</lastmod>
     
@@ -919,13 +926,6 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/archives/index-16.html</loc>
-    
-    <lastmod>2016-09-01T13:04:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yaseng.org/yaseng/index-16.html</loc>
     
     <lastmod>2016-09-01T13:04:56.000Z</lastmod>
@@ -933,14 +933,21 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/archives/index-15.html</loc>
+    <loc>http://yaseng.org/archives/index-16.html</loc>
+    
+    <lastmod>2016-09-01T13:04:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yaseng.org/yaseng/index-15.html</loc>
     
     <lastmod>2016-09-01T13:03:35.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yaseng.org/yaseng/index-15.html</loc>
+    <loc>http://yaseng.org/archives/index-15.html</loc>
     
     <lastmod>2016-09-01T13:03:35.000Z</lastmod>
     
@@ -961,14 +968,14 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/archives/index-13.html</loc>
+    <loc>http://yaseng.org/yaseng/index-13.html</loc>
     
     <lastmod>2016-09-01T09:36:13.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yaseng.org/yaseng/index-13.html</loc>
+    <loc>http://yaseng.org/archives/index-13.html</loc>
     
     <lastmod>2016-09-01T09:36:13.000Z</lastmod>
     
@@ -1017,14 +1024,14 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/yaseng/index-9.html</loc>
+    <loc>http://yaseng.org/archives/index-9.html</loc>
     
     <lastmod>2016-09-01T08:49:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yaseng.org/archives/index-9.html</loc>
+    <loc>http://yaseng.org/yaseng/index-9.html</loc>
     
     <lastmod>2016-09-01T08:49:22.000Z</lastmod>
     
@@ -1045,14 +1052,14 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/archives/index-7.html</loc>
+    <loc>http://yaseng.org/yaseng/index-7.html</loc>
     
     <lastmod>2016-09-01T08:33:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yaseng.org/yaseng/index-7.html</loc>
+    <loc>http://yaseng.org/archives/index-7.html</loc>
     
     <lastmod>2016-09-01T08:33:32.000Z</lastmod>
     
@@ -1087,13 +1094,6 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/archives/index-4.html</loc>
-    
-    <lastmod>2016-04-25T08:37:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yaseng.org/yaseng/index-4.html</loc>
     
     <lastmod>2016-04-25T08:37:26.000Z</lastmod>
@@ -1101,9 +1101,9 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/yaseng/index-3.html</loc>
+    <loc>http://yaseng.org/archives/index-4.html</loc>
     
-    <lastmod>2016-04-25T08:36:14.000Z</lastmod>
+    <lastmod>2016-04-25T08:37:26.000Z</lastmod>
     
   </url>
   
@@ -1115,14 +1115,21 @@
   </url>
   
   <url>
-    <loc>http://yaseng.org/archives/index-2.html</loc>
+    <loc>http://yaseng.org/yaseng/index-3.html</loc>
+    
+    <lastmod>2016-04-25T08:36:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yaseng.org/yaseng/index-2.html</loc>
     
     <lastmod>2016-04-25T08:29:09.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yaseng.org/yaseng/index-2.html</loc>
+    <loc>http://yaseng.org/archives/index-2.html</loc>
     
     <lastmod>2016-04-25T08:29:09.000Z</lastmod>
     
