@@ -76,15 +76,15 @@
       <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
     
     
-      <category term="u 盘破解" scheme="http://yaseng.org/tags/u-%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
-    
       <category term="移动硬盘破解" scheme="http://yaseng.org/tags/%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
-    
-      <category term="录音笔破解" scheme="http://yaseng.org/tags/%E5%BD%95%E9%9F%B3%E7%AC%94%E7%A0%B4%E8%A7%A3/"/>
     
       <category term="智能硬盘破解" scheme="http://yaseng.org/tags/%E6%99%BA%E8%83%BD%E7%A1%AC%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
     
       <category term="固态加密硬盘破解" scheme="http://yaseng.org/tags/%E5%9B%BA%E6%80%81%E5%8A%A0%E5%AF%86%E7%A1%AC%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
+    
+      <category term="u 盘破解" scheme="http://yaseng.org/tags/u-%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
+    
+      <category term="录音笔破解" scheme="http://yaseng.org/tags/%E5%BD%95%E9%9F%B3%E7%AC%94%E7%A0%B4%E8%A7%A3/"/>
     
   </entry>
   
@@ -491,9 +491,9 @@
       <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
     
     
-      <category term="u 盘破解" scheme="http://yaseng.org/tags/u-%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
-    
       <category term="移动硬盘破解" scheme="http://yaseng.org/tags/%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
+    
+      <category term="u 盘破解" scheme="http://yaseng.org/tags/u-%E7%9B%98%E7%A0%B4%E8%A7%A3/"/>
     
       <category term="录音笔破解" scheme="http://yaseng.org/tags/%E5%BD%95%E9%9F%B3%E7%AC%94%E7%A0%B4%E8%A7%A3/"/>
     
@@ -616,37 +616,6 @@
   </entry>
   
   <entry>
-    <title>无人商店零元购</title>
-    <link href="http://yaseng.org/free-shopping-in-unmanned-stores.html"/>
-    <id>http://yaseng.org/free-shopping-in-unmanned-stores.html</id>
-    <published>2018-10-25T16:00:00.000Z</published>
-    <updated>2018-11-17T08:49:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="新零售概念"><a href="#新零售概念" class="headerlink" title="新零售概念"></a>新零售概念</h3><p> 新零售概念提出后，零售行业创新加速，伴随着人工智能和物联网在各个领域的渗透，无人售货便利店、无人售货机的概念进入大众视野，自2016年亚马逊宣布其无人便利店项目Amazon Go准备问世以来，无人便利店像雨后春笋般涌现，在以消费者为中心的商业时代，无人便利店以其高效率、优质的服务体验和低人力成本等等优势，在未来将得到巨大市场发展。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image7.jpg" alt="image7"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image8.jpg" alt="image8"></p><p>无人零售多采用人工智能、物联网RFID、二维码识别等技术，但是正因为新技术的引入，而导致攻击面随之扩大，RFID标签的篡改、识别信号拦截、人工智能算法欺骗、云端通信拦截等等都有可能导致大量的盗损，并因其利用简单、攻击成本低、攻击难以检测等特点，比传统商店所面临的盗损风险更大，从而严重威胁到市场发展，因此安全是无人零售行业长足发展的基石。</p><h3 id="行业发展"><a href="#行业发展" class="headerlink" title="行业发展"></a>行业发展</h3><p>2016年 新零售”一词由马云在2016年杭州云栖大会上首次提及，与新制造、新金融、新技术、新能源一起被称为未来五大新趋势。“新零售”概念强调的是线上与线下将深度结合，在现代物流加持下，结合大数据、云计算等创新技术构成的新商业模式。<br>2017年下半年，无人零售以其超前的购物体验成为新零售最受资本和消费者关注的形态之一。7月1日，F5未来商店完成3000万元A+轮融资；7月3日缤果盒子完成超1亿元A轮融资；7月8日阿里巴巴无人超市“淘咖啡”的落地亮相2017年淘宝造物节。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image14.jpg" alt="image14"></p><p>截至2017年9月底我国每年无人零售企业成立数。</p><h3 id="安全现状"><a href="#安全现状" class="headerlink" title="安全现状"></a>安全现状</h3><ul><li>上海一无人超市一周遭盗窃6次防盗成了大难题</li><li>成都批捕首例无人超市盗窃嫌疑人</li><li>浙江多次盗窃无人超市 三男子被刑拘</li><li>东莞两月盗窃无人超市11次 “贪心”男被刑拘</li></ul><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/640.jpg" alt="640"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/6401.jpg" alt="6401"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/6403.jpg" alt="6403"></p><p>无人商店最大问题是开放式零售形态可能面临少数顾客逃避付款，而难以完全保证商户利益的问题。</p><h2 id="UHF标签"><a href="#UHF标签" class="headerlink" title="UHF标签"></a>UHF标签</h2><h3 id="UHF超高频远距离RFID"><a href="#UHF超高频远距离RFID" class="headerlink" title="UHF超高频远距离RFID"></a>UHF超高频远距离RFID</h3><p>特高频Ultra High Frequency(UHF)是指频率为300~3000MHz，波长在1m~1dm的无线电波。该波段的无线电波又称为分米波。UHF标签是RFID电子标签中的一种。属于无源电子标签，在阅读器的读出范围之外时，电子标签处于无源状态，在阅读器的读出范围之内时，电子标签从阅读器发出的射频能量中提取其工作所需的电源。在我国 800/900MHz 频段 UHF 技术的具体使用频率为 840-845MHz 和920-925MHz。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image15.jpg" alt="image15"></p><p>UHF电子标签具有识别距离远、识读率高、防冲突能力强、可扩展性好等特点，读卡距离达3－10米，每秒可读100张卡，因此UHF技术大量应用在仓储、物流盘点等场所，随着无人商店的发展，UHF技术开始广泛应用于店内的商品标识上。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image16.jpg" alt="image16"></p><h3 id="UHF电子标签安全问题"><a href="#UHF电子标签安全问题" class="headerlink" title="UHF电子标签安全问题"></a>UHF电子标签安全问题</h3><p>目前无人商店使用的UHF电子标签大部分采用基于EPC Class1 Gen2（简称G2）协议的标签， EPC标签内置的芯片存储有具体的数据信息，其Tag memory（标签内存）分为Reserved（保留），EPC（电子产品代码），TID（标签识别号）和User（用户）四个独立的存储区块（Bank）。 其中</p><ul><li>Reserved区，存储Kill Password（灭活口令）和Access Password（访问口令）。</li><li>EPC区：存储EPC号码等，可以对供应链中的对象（包括物品、货箱、货盘、位置等）进行全球唯一的标识，无人商店中商品的唯一识别ID即存储于EPC区。</li><li>TID区：存储标签识别号码，每个TID号码应该是唯一的。 </li><li>User区：存储用户自定义的数据。 </li></ul><p>此外还有各区块的Lock（锁定）状态位等用到的也是存储性质的单元。<br>标签收到连续波（CW）照射即上电（Power-up）以后，标签可处于Ready（准备），Arbitrate（裁断），Reply（回令），Acknowledged（应答），Open（公开），Secured（保护），Killed（灭活）七种状态之一。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image17.jpg" alt="image17"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image18.jpg" alt="image18"></p><p>EPC区存储的唯一标识，如果标签没有进行灭活（Killed），或者没有进行锁定（Lock）或加密码保护（Secured），就能通过读写器再次进行修改，而在实际生产环节，厂商出于成本和便捷性考虑，并没有进行灭活（Killed）、锁定（Lock）、保护（Secured）等标签数据防护手段，这就导致了可以通过外部读写器改变商品标识的风险，利用专用工具，可以把高价商品的标识与低价商品标识互换，或者把已经购买过的商品标识换到未购买过的商品上，即可轻松绕过店内的监控报警系统。</p><h2 id="攻击设备"><a href="#攻击设备" class="headerlink" title="攻击设备"></a>攻击设备</h2><p>基于修改EPC区唯一标识的方法，自制了隐蔽标签修改器，把读写器天线、电池、读写模块集成在一起，然后隐藏在手机壳内部，在通过耳机接口与手机通信，在APP里面进行数据操作修改，实现最大程度的隐蔽攻击。相比传统从网络层或通信层的攻击，操作简单，没有技术门槛，任何人只要掌握了工具的操作方式，即可实现攻击，危害性和影响力更为广泛。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image19.jpg" alt="image19"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image20.jpg" alt="image20"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image21.jpg" alt="image21"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image22.jpg" alt="image22"></p><h2 id="效果演示"><a href="#效果演示" class="headerlink" title="效果演示"></a>效果演示</h2><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/20181116172418.jpg" alt=""></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/20181116172423.jpg" alt=""></p><p>Geekpwn 2018 上海站实验室无人商店“0元购”演讲，并现场对该设备进行展示。</p><p>视频演示：  <a href="https://www.bilibili.com/video/av36079154/" target="_blank" rel="noopener">https://www.bilibili.com/video/av36079154/</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li>无人超市“零元购” | 挥一挥衣袖，不花钱带走一个超市  <a href="https://mp.weixin.qq.com/s/NQ9r1kLhZ33SEGZykf9fHw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/NQ9r1kLhZ33SEGZykf9fHw</a></li><li>物联网安全百科  <a href="https://iot-security.wiki/" target="_blank" rel="noopener">https://iot-security.wiki/</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;h3 id=&quot;新零售概念&quot;&gt;&lt;a href=&quot;#新零售概念&quot; class=&quot;headerlink&quot; title=&quot;新零售概念&quot;&gt;&lt;/a&gt;新零售概
-      
-    
-    </summary>
-    
-      <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="无人超市" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82/"/>
-    
-      <category term="无人超市安全" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="无人超市破解" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82%E7%A0%B4%E8%A7%A3/"/>
-    
-      <category term="无人超市零元购" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82%E9%9B%B6%E5%85%83%E8%B4%AD/"/>
-    
-  </entry>
-  
-  <entry>
     <title>破解硬件ase256 加密指纹u盘(极棒大赛)</title>
     <link href="http://yaseng.org/cracking_hardware_aes256_encrypted_fingerprint_flash_disk_in_geekpwn_2018.html"/>
     <id>http://yaseng.org/cracking_hardware_aes256_encrypted_fingerprint_flash_disk_in_geekpwn_2018.html</id>
@@ -676,6 +645,37 @@
       <category term="侧信道攻击" scheme="http://yaseng.org/tags/%E4%BE%A7%E4%BF%A1%E9%81%93%E6%94%BB%E5%87%BB/"/>
     
       <category term="电磁攻击" scheme="http://yaseng.org/tags/%E7%94%B5%E7%A3%81%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无人商店零元购</title>
+    <link href="http://yaseng.org/free-shopping-in-unmanned-stores.html"/>
+    <id>http://yaseng.org/free-shopping-in-unmanned-stores.html</id>
+    <published>2018-10-25T16:00:00.000Z</published>
+    <updated>2018-11-17T08:49:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="新零售概念"><a href="#新零售概念" class="headerlink" title="新零售概念"></a>新零售概念</h3><p> 新零售概念提出后，零售行业创新加速，伴随着人工智能和物联网在各个领域的渗透，无人售货便利店、无人售货机的概念进入大众视野，自2016年亚马逊宣布其无人便利店项目Amazon Go准备问世以来，无人便利店像雨后春笋般涌现，在以消费者为中心的商业时代，无人便利店以其高效率、优质的服务体验和低人力成本等等优势，在未来将得到巨大市场发展。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image7.jpg" alt="image7"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image8.jpg" alt="image8"></p><p>无人零售多采用人工智能、物联网RFID、二维码识别等技术，但是正因为新技术的引入，而导致攻击面随之扩大，RFID标签的篡改、识别信号拦截、人工智能算法欺骗、云端通信拦截等等都有可能导致大量的盗损，并因其利用简单、攻击成本低、攻击难以检测等特点，比传统商店所面临的盗损风险更大，从而严重威胁到市场发展，因此安全是无人零售行业长足发展的基石。</p><h3 id="行业发展"><a href="#行业发展" class="headerlink" title="行业发展"></a>行业发展</h3><p>2016年 新零售”一词由马云在2016年杭州云栖大会上首次提及，与新制造、新金融、新技术、新能源一起被称为未来五大新趋势。“新零售”概念强调的是线上与线下将深度结合，在现代物流加持下，结合大数据、云计算等创新技术构成的新商业模式。<br>2017年下半年，无人零售以其超前的购物体验成为新零售最受资本和消费者关注的形态之一。7月1日，F5未来商店完成3000万元A+轮融资；7月3日缤果盒子完成超1亿元A轮融资；7月8日阿里巴巴无人超市“淘咖啡”的落地亮相2017年淘宝造物节。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image14.jpg" alt="image14"></p><p>截至2017年9月底我国每年无人零售企业成立数。</p><h3 id="安全现状"><a href="#安全现状" class="headerlink" title="安全现状"></a>安全现状</h3><ul><li>上海一无人超市一周遭盗窃6次防盗成了大难题</li><li>成都批捕首例无人超市盗窃嫌疑人</li><li>浙江多次盗窃无人超市 三男子被刑拘</li><li>东莞两月盗窃无人超市11次 “贪心”男被刑拘</li></ul><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/640.jpg" alt="640"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/6401.jpg" alt="6401"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/6403.jpg" alt="6403"></p><p>无人商店最大问题是开放式零售形态可能面临少数顾客逃避付款，而难以完全保证商户利益的问题。</p><h2 id="UHF标签"><a href="#UHF标签" class="headerlink" title="UHF标签"></a>UHF标签</h2><h3 id="UHF超高频远距离RFID"><a href="#UHF超高频远距离RFID" class="headerlink" title="UHF超高频远距离RFID"></a>UHF超高频远距离RFID</h3><p>特高频Ultra High Frequency(UHF)是指频率为300~3000MHz，波长在1m~1dm的无线电波。该波段的无线电波又称为分米波。UHF标签是RFID电子标签中的一种。属于无源电子标签，在阅读器的读出范围之外时，电子标签处于无源状态，在阅读器的读出范围之内时，电子标签从阅读器发出的射频能量中提取其工作所需的电源。在我国 800/900MHz 频段 UHF 技术的具体使用频率为 840-845MHz 和920-925MHz。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image15.jpg" alt="image15"></p><p>UHF电子标签具有识别距离远、识读率高、防冲突能力强、可扩展性好等特点，读卡距离达3－10米，每秒可读100张卡，因此UHF技术大量应用在仓储、物流盘点等场所，随着无人商店的发展，UHF技术开始广泛应用于店内的商品标识上。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image16.jpg" alt="image16"></p><h3 id="UHF电子标签安全问题"><a href="#UHF电子标签安全问题" class="headerlink" title="UHF电子标签安全问题"></a>UHF电子标签安全问题</h3><p>目前无人商店使用的UHF电子标签大部分采用基于EPC Class1 Gen2（简称G2）协议的标签， EPC标签内置的芯片存储有具体的数据信息，其Tag memory（标签内存）分为Reserved（保留），EPC（电子产品代码），TID（标签识别号）和User（用户）四个独立的存储区块（Bank）。 其中</p><ul><li>Reserved区，存储Kill Password（灭活口令）和Access Password（访问口令）。</li><li>EPC区：存储EPC号码等，可以对供应链中的对象（包括物品、货箱、货盘、位置等）进行全球唯一的标识，无人商店中商品的唯一识别ID即存储于EPC区。</li><li>TID区：存储标签识别号码，每个TID号码应该是唯一的。 </li><li>User区：存储用户自定义的数据。 </li></ul><p>此外还有各区块的Lock（锁定）状态位等用到的也是存储性质的单元。<br>标签收到连续波（CW）照射即上电（Power-up）以后，标签可处于Ready（准备），Arbitrate（裁断），Reply（回令），Acknowledged（应答），Open（公开），Secured（保护），Killed（灭活）七种状态之一。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image17.jpg" alt="image17"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image18.jpg" alt="image18"></p><p>EPC区存储的唯一标识，如果标签没有进行灭活（Killed），或者没有进行锁定（Lock）或加密码保护（Secured），就能通过读写器再次进行修改，而在实际生产环节，厂商出于成本和便捷性考虑，并没有进行灭活（Killed）、锁定（Lock）、保护（Secured）等标签数据防护手段，这就导致了可以通过外部读写器改变商品标识的风险，利用专用工具，可以把高价商品的标识与低价商品标识互换，或者把已经购买过的商品标识换到未购买过的商品上，即可轻松绕过店内的监控报警系统。</p><h2 id="攻击设备"><a href="#攻击设备" class="headerlink" title="攻击设备"></a>攻击设备</h2><p>基于修改EPC区唯一标识的方法，自制了隐蔽标签修改器，把读写器天线、电池、读写模块集成在一起，然后隐藏在手机壳内部，在通过耳机接口与手机通信，在APP里面进行数据操作修改，实现最大程度的隐蔽攻击。相比传统从网络层或通信层的攻击，操作简单，没有技术门槛，任何人只要掌握了工具的操作方式，即可实现攻击，危害性和影响力更为广泛。</p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image19.jpg" alt="image19"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image20.jpg" alt="image20"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image21.jpg" alt="image21"></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/image22.jpg" alt="image22"></p><h2 id="效果演示"><a href="#效果演示" class="headerlink" title="效果演示"></a>效果演示</h2><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/20181116172418.jpg" alt=""></p><p><img src="https://img-1253984064.cos.ap-guangzhou.myqcloud.com/lo95jrf43d/20181116172423.jpg" alt=""></p><p>Geekpwn 2018 上海站实验室无人商店“0元购”演讲，并现场对该设备进行展示。</p><p>视频演示：  <a href="https://www.bilibili.com/video/av36079154/" target="_blank" rel="noopener">https://www.bilibili.com/video/av36079154/</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li>无人超市“零元购” | 挥一挥衣袖，不花钱带走一个超市  <a href="https://mp.weixin.qq.com/s/NQ9r1kLhZ33SEGZykf9fHw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/NQ9r1kLhZ33SEGZykf9fHw</a></li><li>物联网安全百科  <a href="https://iot-security.wiki/" target="_blank" rel="noopener">https://iot-security.wiki/</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;h3 id=&quot;新零售概念&quot;&gt;&lt;a href=&quot;#新零售概念&quot; class=&quot;headerlink&quot; title=&quot;新零售概念&quot;&gt;&lt;/a&gt;新零售概
+      
+    
+    </summary>
+    
+      <category term="物联网安全" scheme="http://yaseng.org/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="无人超市" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82/"/>
+    
+      <category term="无人超市安全" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="无人超市破解" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82%E7%A0%B4%E8%A7%A3/"/>
+    
+      <category term="无人超市零元购" scheme="http://yaseng.org/tags/%E6%97%A0%E4%BA%BA%E8%B6%85%E5%B8%82%E9%9B%B6%E5%85%83%E8%B4%AD/"/>
     
   </entry>
   
