@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>绿色坟墓 | 霸唱宇宙 天下霸唱作品人物关系图谱</title>
+<style type="text/css">
+    html, body {
+      font: 10pt arial;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+      /* Show it's not fixed to the top */
+ /* Show it is fixed to the top */
+ 
+    #mynetwork {
+      width: auto;
+     height: 100%;
+    }
+</style>
+<!-- Bootstrap core CSS -->
+<link href="https://greentomb-1251294608.cos.ap-guangzhou.myqcloud.com/static/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://greentomb-1251294608.cos.ap-guangzhou.myqcloud.com/static/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="https://greentomb-1251294608.cos.ap-guangzhou.myqcloud.com/static/js/dialog.js"></script>
+<script type="text/javascript" src="https://greentomb-1251294608.cos.ap-guangzhou.myqcloud.com/static/js/vis-network.min.js"></script>
+<script type="text/javascript" src="https://greentomb-1251294608.cos.ap-guangzhou.myqcloud.com/static/js/tooltip.min.js"></script>
+
+ 
+
+
+
+<script type="text/javascript"> 
+    var nodes = null;
+    var edges = null;
+    var network = null;
+    // Called when the Visualization API is loaded.
+     var DIR = 'https://greentomb-1251294608.cos.ap-guangzhou.myqcloud.com/images/photo/';
+    hero_details =[
+  {id:1, name:"张三链子",role:"摸金校尉",tag:"primary","image": DIR + '1.png',alias:"张三爷、张小辫",introduce:"张三链子，清末摸金校尉，著有《十六字阴阳风水秘术》，是清末盗墓行里的老夫子，他一人挂三符，世上多称其为张三链子。"},
+  {id:2, name:"了尘",role:"摸金校尉",tag:"primary","image": DIR + '2.jpg',alias:"飞天狻猊、了尘长老",introduce:"清末传奇摸金校尉张三链子首席徒弟，此人轻功了得。了尘自幼做过飞檐走壁的通天大盗，偷取豪宅大户从不失手，寻龙诀和分金定穴之术尽得张三爷传授。他心热似火，好管天下不平事，常有济世救人之心。后出家为僧，皈依佛门，法号了尘。"},
+  {id:3, name:"孙国辅",role:"金点先生",tag:"info","image": DIR + '3.jpeg',alias:"阴阳眼",introduce:"孙国辅生有一双阴阳眼，拜张三链子为师，学了一身打卦相地、选取阴阳二宅的本事，会风水算命、遁甲五行，又满腹经纶，一派道学思想，继承了张三链子的半本《十六字阴阳风水秘术》。"},
+  {id:4, name:"铁磨头",role:"摸金校尉",tag:"primary","image": DIR + '4.jpg',alias:"",introduce:"铁磨头，张三链子第三个徒弟，一身本事，胆大包天，不惧鬼神，论杀人越货勾当他都是行家里手，可身上匪气太重，脾气点火就着，做事又比较草率，是个祸头，和了尘一起救人时被机关打中罩门，当场死于非命。其摸金符辗转了尘、鹧鸪哨、Shirley杨，最后到了胡八一手里。"},
+  {id:5, name:"张九衣",role:"金点先生",tag:"info","image": DIR + '111.jpg',alias:"文武先生",introduce:"醉鬼张九衣，号文武先生，精通相物古术，金点算法。"},
+  {id:6, name:"胡国华",role:"金点先生",tag:"info","image": DIR + '6.jpg',alias:"",introduce:"祖上曾是显赫一方的大财主，到其胡国华时期家道中落。经一番世态炎凉之后拜阴阳眼孙国辅门下成为一代金点先生，在家乡洞庭湖畔的县城坐馆算卦。"},
+  {},
+  {id:8, name:"胡八一",role:"摸金校尉",tag:"primary","image": DIR + '8.jpg',alias:"胡爷、胡总司令",introduce:"敢想、敢说、敢做、敢闯、敢革命，总能找到理由说服自己和别人。祖上曾是显赫一方的大财主，到其祖父时期家道中落，祖父胡国华经一番世态炎凉之后成为一代金点先生。下过乡，当过兵，后凭借一本《十六字阴阳风水秘术》掌握寻龙点穴之术，开始了摸金校尉的生涯，与shirley杨、王胖子三人走上了盗墓之路，由此引发一系列的探险故事。"},
+  {id:9, name:"鹧鸪哨",role:"搬山道人 | 摸金校尉",tag:"primary","image": DIR + '9.jpg',alias:"",introduce:"鹧鸪哨阅历极广，精通各地方言、风土人情，绿林中声名远扬。手持两把德国二十响镜面匣子，枪法如神，擒拿格斗无出其右。继承搬山道人的搬山填海术，机变百出，擅长口技，因而绰号鹧鸪哨。"},
+  {id:10, name:"shirley杨",role:"摸金校尉",tag:"primary","image": DIR + '10.jpg',alias:"雪莉杨、杨参谋长",introduce:"美籍华人，美国《国家地理》杂志的摄影师。她勇敢、冷静、机敏，有着矫健的身手。父亲是一个很有声望的考古学家，使得小时候的她对考古产生了浓厚的兴趣。后来父亲在寻找精绝古城的探险考古中不幸失踪。为了找回父亲，来到中国找到父亲的好友陈教授，组织了一支考古队伍，才引出胡八一和胖子的加入，开始了他们三人的传奇故事。"},
+  {id:11, name:"金算盘",role:"摸金校尉",tag:"primary","image": DIR + '11.jpg',alias:"",introduce:"金算盘，商贾世家出身，懂得奇门销器儿，为人精明油滑，难得的是立心正直，只是自视过高，不将常人放在眼内，一架纯金打造的算盘从不离手，算盘珠和框子上刻满了天干地支之数。他这算盘不是用来算账的，而是专以演算五行数术，占测八门方位，他和张三爷早年相识，交情不凡，半是师徒半是朋友。后来在鱼骨庙的西周幽灵冢中不幸意外死亡。"},
+  {id:12, name:"司马灰",role:"亡命之徒",tag:"danger","image": DIR + '12.jpg',alias:"八爷",introduce:"司马灰自幼拜过“文武先生”，身手敏捷、胆色出众，又能言善道，懂得江湖辞令，十五岁后独自在“黑屋”地区谋生，之后参加缅共游击队，横扫缅寮百战百捷，在之后密林寻宝、险境求生的经历中，司马灰以他的聪明才智和绿林手段，屡次化险为夷，成为探险队的核心人物。"},
+  {id:13, name:"张赢川",role:"发丘天官",tag:"dark","image": DIR + '13.jpg',alias:"张天官",introduce:"张赢川，发丘天官，甘于平凡，貌不惊人，穷通易学，推天道明人事，《十六字阴阳风水秘术》作者张三链子的后代。"},
+  {id:14, name:"杨方",role:"摸金校尉",tag:"primary","image": DIR + '14.jpg',alias:"打神鞭",introduce:"   民国初年，铁嘴霸王崔道成、神盗快手冯殿臣、草头太岁孟奔、打神鞭杨方四位义士结拜为兄弟。崔道成说书算卦，甚会降妖捉怪；冯殿臣懂得火药，通晓机关布置；孟奔学过横练儿，能头碎磨盘；杨方身手敏捷，可上天入地。他们下金顶宝城，护古寺重宝，除军阀头子，济灾民无数，在黄河岸边流传下许多惊心动魄的传奇故事。"},
+  {id:15, name:"崔老道",role:"火工道人",tag:"warning","image": DIR + '15.jpeg',alias:"崔道成、铁嘴霸王",introduce:"崔道成别称崔老道，是天津卫四大奇人之首,，曾在龙虎山五雷殿偷看了两行半的天书，常以姜子牙和张子房自比。无奈他命浅福薄，能耐再大也不敢用。"},
+  {id:16, name:"瞎老义",role:"摸金校尉",tag:"primary","image": DIR + '16.jpg',alias:"",introduce:"杨方之徒瞎老义这一辈，只剩下一路倒腾墓道石的惨淡买卖。"},
+  {id:17, name:"陈玉楼",role:"卸岭力士",tag:"success","image": DIR + '17.jpg',alias:"陈瞎子、陈总把头",introduce:"陈玉楼，字金堂，别名陈瞎子，为民国时期最大黑道势力“常胜山”的总把头，天下群盗之首，卸岭力士魁首，出身湘阴望族，为盗墓世家第三代盗魁。"},
+    {id:18, name:"胖子",role:"摸金校尉",tag:"primary","image": DIR + '18.jpg',alias:"王凯旋、胖爷",introduce:"将门之后高干子弟，除了怕高别的都不在乎，不仅具备完善的斗争理论，更可贵的是敢于斗争，善于斗争，乐于斗争。他是一个比喻成现代社会中那些容易被误解的一群平凡人，但事实上却有着平凡人容易被大众忽视个人特长，往往在意想不到的时候发挥出超乎意外的力量。"},
+    {id:19, name:"罗大舌头",role:"亡命之徒",tag:"danger","image": DIR + '20.jpg',alias:"罗大海、罗大寨主",introduce:"体格魁梧，相貌堂堂，身高和体力都超出同龄人许多，又爱管闲事，专要打抱不平，所以在同伙中很有号召力。只是他小时候在东北把嘴冻坏了，造成说起话来口齿不太清楚，可偏偏话多，因此上得了个绰号“罗大舌头”。和司马灰在黑屋一同打天下谋生，并一同前往缅共游击队和参与密林寻宝等活动。"}
+    ]
+    function draw() {
+      // create people.
+      // value corresponds with the age of the person
+      var DIR = 'https://greentomb-1251294608.cos.ap-guangzhou.myqcloud.com/images/avatar/';
+      nodes = [
+        {id: 1,  shape: 'circularImage', image: DIR + '1.png', label:"张三链子",group:0},
+        {id: 2,  shape: 'circularImage', image: DIR + '2.jpg', label:"了尘",group:1},
+        {id: 3,  shape: 'circularImage', image: DIR + '3.jpg', label:"孙国辅",group:1},
+        {id: 4,  shape: 'circularImage', image: DIR + '4.png', label:"铁磨头",group:1},
+        {id: 5,  shape: 'circularImage', image: DIR + '5.png', label:"张九衣",group:1},
+        {id: 6,  shape: 'circularImage', image: DIR + '6.png', label:"胡国华",group:2},
+        {id: 8,  shape: 'circularImage', image: DIR + '8.jpg', label:"胡八一",group:4},
+        {id: 9,  shape: 'circularImage', image: DIR + '9.jpg', label:"鹧鸪哨",group:2},
+        {id: 10,  shape: 'circularImage', image: DIR + '10.png', label:"shirley杨",group:4},
+        {id: 11,  shape: 'circularImage', image: DIR + '11.png', label:"金算盘",group:1},
+        {id: 12,  shape: 'circularImage', image: DIR + '12.png', label:"司马灰",group:4},
+        {id: 13,  shape: 'circularImage', image: DIR + '13.jpg', label:"张赢川",group:4},
+        {id: 14,  shape: 'circularImage', image: DIR + '14.png', label:"杨方",group:2},
+        {id: 15,  shape: 'circularImage', image: DIR + '15.png', label:"崔老道",group:2},
+        {id: 16,  shape: 'circularImage', image: DIR + '16.jpg', label:"瞎老义",group:3},
+        {id: 17,  shape: 'circularImage', image: DIR + '17.jpg', label:"陈玉楼",group:2},
+        {id: 18,  shape: 'circularImage', image: DIR + '18.png', label:"胖子",group:4},
+        {id: 19,  shape: 'circularImage', image: DIR + '20.png', label:"罗大舌头",group:4},
+      ];
+      // create connections between people
+      // value corresponds with the amount of contact between two people
+      edges = [
+        {from: 1, to: 2,label:"师徒"},
+        {from: 1, to: 3,label:"师徒"},
+        {from: 1, to: 4,label:"师徒"},
+        {from: 1, to: 5,label:"祖先"},
+        {from: 1, to: 11,label:"祖先"},
+        {from: 3, to: 6,label:"师徒"},
+        {from: 6, to: 8,label:"祖孙"},
+        {from: 2, to: 9,label:"师徒"},
+        {from: 9, to: 10,label:"祖孙"},
+        {from: 5, to: 12,label:"师徒"},
+        {from: 12, to: 13,label:"师兄弟"},
+        {from: 11, to: 14,label:"师徒"},
+        {from: 14, to: 15,label:"结义兄弟"},
+        {from: 14, to: 16,label:"师徒"},
+        {from: 9, to: 17,label:"表面兄弟"},
+        {from: 8, to: 18,label:"生死兄弟"},
+        {from: 12, to: 19,label:"生死兄弟"},
+      ];
+      // create a network
+      var container = document.getElementById('mynetwork');
+      var data = {
+        nodes: nodes,
+        edges: edges
+      };
+      var options = {
+        nodes: {
+          borderWidth:3,
+          size:28,
+          color: {
+            border: '#222222',
+            background: '#666666'
+          },
+           font:{color:'#2E8B57'}
+        },
+        edges: {
+          color: 'lightgray'
+        }
+        , 
+        autoResize: true ,
+        interaction:{
+            hover:true
+        }
+      };
+      network = new vis.Network(container, data, options);
+    network.on("hoverNode", function(properties){
+      // functionality for popup to show on mouseover
+      // console.log("111111111");
+    });
+    network.on("blurNode", function(properties){
+      // functionality for popup to hide on mouseout
+     // console.log("2222222222");
+    });
+    network.on('click', function (properties) {
+        var nodeID = properties.nodes[0];
+        if (nodeID) {
+            console.log(nodeID);
+          //use JQUERY to see where the canvas is on the page.
+            var canvasPosition = $('.vis-network').position();
+            //the properties give x & y relative to the edge of the canvas, not to the whole document.
+            var clickX = properties.pointer.DOM.x + canvasPosition.top;
+            var clickY = properties.pointer.DOM.y + canvasPosition.left;
+        //  var tip = new Tooltip('Foo bar!');
+       //   tip.position(clickX, clickY).show();
+          //make sure we have a valid div, either clear it or generate one.
+            if ($('#cellBatchAttrPopUp').length) {
+                $('div#cellBatchAttrPopUp').empty();
+            }
+            else {
+                $('<div id="cellBatchAttrPopUp"></div>').click(function () {
+            //clicking the popup hides it again.
+                    $(this).empty().hide();
+                }).css('position','absolute').appendTo("body");
+            }
+
+
+            make_details(hero_details[nodeID-1]);
+           var d = dialog({
+            align: 'top',
+          content:  $('#ycard').html(),
+          quickClose: true,
+          width: '20em'
+        });
+      //  d.show(container);
+        $('div#cellBatchAttrPopUp').css('top', clickY).css('left', clickX);
+         d.show(document.getElementById('cellBatchAttrPopUp'));
+        }
+     });
+    }
+    function  make_details(details){
+       $("#ycard").remove();
+    var html_tpl =   '<div class="card"  style="width:20em; display:none "  id="ycard"  >\n<img class="card-img-top"  width="60%" src="'+details['image']+'"  >\n<div class="card-body"><span class="card-title">  <span class="badge badge-'+details['tag']+'">'+details['role']+'</span>  <strong>'+details['name']+'</strong> ('+details['alias']+') </span>\n<p class="card-text">'+details['introduce']+'</p></div></div>';
+     $("body").append(html_tpl);
+    return  html_tpl;
+    }
+  </script>
+</head>
+<body onload="draw()">
+
+
+ 
+
+
+<div id="mynetwork">
+
+<main role="main" class="container"></main>
+
+</div>
+</body>
+
+
+
+
+</html>
